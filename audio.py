@@ -1,10 +1,14 @@
-"""Procedural soundtrack for an episode (zero-cost, no samples). Usage: python3 audio.py episodes/ep01.json out.wav"""
+"""Procedural soundtrack for an episode (zero-cost, no samples). Usage: python3 audio.py episodes/epXX.json out.wav [audio_meta.json]"""
 import json, sys, wave
 import numpy as np
 from scipy.signal import butter, lfilter
 
 SR = 44100
 ep = json.load(open(sys.argv[1]))
+if ep.get("episode", 1) >= 2:                      # Ep 2+ use the cue-based engine
+    import audio_v2
+    audio_v2.main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
+    sys.exit(0)
 E = ep["events"]
 N = int(ep["duration"] * SR)
 t = np.arange(N) / SR

@@ -27,21 +27,27 @@ page.on('pageerror', e => console.error('[page error]', e.message));
 await page.goto(`http://localhost:${port}/index.html?ep=${process.env.EP || "01"}`);
 await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
 const wrap = await page.$('#wrap');
+const meta = await page.evaluate(() => window.AUDIO_META || null);
+if (meta) fs.writeFileSync(process.env.AUDIO_META_OUT || 'audio_meta.json', JSON.stringify(meta));
 
 if (mode === 'stills') {
   fs.mkdirSync(out, { recursive: true });
   for (const t of rest.map(Number)) {
+    const t0 = Date.now();
     await page.evaluate(t => window.renderAt(t), t);
+    const t1 = Date.now();
     await wrap.screenshot({ path: path.join(out, `t${String(t).padStart(5, '0')}.png`) });
-    console.log('still', t);
+    console.log('still', t, 'render', t1 - t0, 'ms', 'shot', Date.now() - t1, 'ms');
   }
 } else {
-  const fps = 30, dur = await page.evaluate(() => window.EP.duration), n = Math.round(dur * fps);
+  const fps = 30, dur = await page.evaluate(() => window.EP.duration), total = Math.round(dur * fps);
+  // optional chunking: FRAME_START/FRAME_END let long episodes render in resumable pieces
+  const f0 = +(process.env.FRAME_START || 0), f1 = Math.min(total, +(process.env.FRAME_END || total)), n = f1 - f0;
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
     '-c:v', 'libx264', '-preset', 'medium', '-crf', '17', '-pix_fmt', 'yuv420p', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let i = 0; i < n; i++) {
-    await page.evaluate(t => window.renderAt(t), i / fps);
+    await page.evaluate(t => window.renderAt(t), (f0 + i) / fps);
     const buf = await wrap.screenshot({ type: 'jpeg', quality: 95 });
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
     if (i % 60 === 0) console.log(`frame ${i}/${n}  ${((Date.now() - t0) / 1000).toFixed(0)}s`);

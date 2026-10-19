@@ -93,16 +93,20 @@ export function makeHero() {
     return { shoulder, joint };
   };
   const armL = limb(1, true), armR = limb(-1, true), legL = limb(1, false), legR = limb(-1, false);
+  // attachment markers (world positions for props/creatures)
+  const handR = new THREE.Object3D(); handR.position.set(0, -0.33, 0.05); armR.joint.add(handR);
+  const pocket = new THREE.Object3D(); pocket.position.set(0.09, 0.4, 0.17); torso.add(pocket);
+  const shoulderL = new THREE.Object3D(); shoulderL.position.set(0.21, 0.66, -0.02); torso.add(shoulderL);
 
   tag(root, SET.SUIT);
   root.traverse(o => { if (o.isMesh && o.material === cyan) o.userData.set = SET.ENERGY; if (o.isMesh && o.material === glass) o.userData.noId = true; });
 
-  return { root, body, pelvis, torso, chest: chestMesh, neck, head, armL, armR, legL, legR, gun, headLight, cyanMat: cyan, height: 1.86 };
+  return { root, body, pelvis, torso, chest: chestMesh, neck, head, armL, armR, legL, legR, gun, headLight, cyanMat: cyan, height: 1.86, handR, pocket, shoulderL };
 }
 
 // Natural human pose. walk 0..1, phase radians, t seconds (idle breathing), reach 0..1 right hand forward,
 // crouch 0..1 (kneeling on right knee), lookUp -1..1
-export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp = 0 } = {}, t = 0) {
+export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp = 0, armRo = null, armLo = null, headYaw = 0 } = {}, t = 0) {
   const s = Math.sin(phase), c = Math.cos(phase);
   const sR = Math.sin(phase + Math.PI), cR = Math.cos(phase + Math.PI);
   const kneeSwing = x => Math.max(0, x) ** 1.4;
@@ -131,5 +135,14 @@ export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp
 
   // head stays level (counters torso), looks around
   h.neck.rotation.set(-0.06 * walk - lookUp * 0.5 - crouch * 0.15, -0.1 * s * walk, 0);
-  h.head.rotation.set(-lookUp * 0.25, Math.sin(t * 0.4) * 0.08 * idle, 0);
+  h.head.rotation.set(-lookUp * 0.25, Math.sin(t * 0.4) * 0.08 * idle + headYaw, 0);
+
+  // explicit arm poses blended on top (x/y/z = shoulder euler, ex = elbow bend, w = blend 0..1)
+  const blendArm = (arm, o) => {
+    if (!o || !(o.w > 0)) return;
+    const w = Math.min(1, o.w), r = arm.shoulder.rotation, j = arm.joint.rotation;
+    r.set(r.x + ((o.x ?? r.x) - r.x) * w, r.y + ((o.y ?? r.y) - r.y) * w, r.z + ((o.z ?? r.z) - r.z) * w);
+    j.x = j.x + ((o.ex ?? j.x) - j.x) * w;
+  };
+  blendArm(h.armR, armRo); blendArm(h.armL, armLo);
 }

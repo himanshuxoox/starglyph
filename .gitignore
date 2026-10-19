@@ -2,3 +2,4 @@ node_modules/
 *.mp4
 *.wav
 client_secret*.json
+audio_meta.json

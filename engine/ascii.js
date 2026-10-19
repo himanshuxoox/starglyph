@@ -92,7 +92,7 @@ void main(){
 }`;
 
 export class AsciiEngine {
-  constructor(canvas, { width = 720, height = 1280, cell = [6, 10], sceneScale = 1.0 } = {}) {
+  constructor(canvas, { width = 720, height = 1280, cell = [6, 10], sceneScale = 1.0, idScale = 1.0 } = {}) {
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: false, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(1);
     this.renderer.setSize(width, height, false);
@@ -100,7 +100,7 @@ export class AsciiEngine {
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
     const sw = Math.round(width * sceneScale), sh = Math.round(height * sceneScale);
     this.rtColor = new THREE.WebGLRenderTarget(sw, sh, { type: THREE.HalfFloatType });
-    this.rtId = new THREE.WebGLRenderTarget(sw, sh, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
+    this.rtId = new THREE.WebGLRenderTarget(Math.round(sw * idScale), Math.round(sh * idScale), { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
     this.idMats = [...Array(8)].map((_, i) => new THREE.MeshBasicMaterial({
       color: new THREE.Color().setRGB((i + 0.5) / 8, 0, 0, THREE.LinearSRGBColorSpace) }));
     this.postMat = new THREE.ShaderMaterial({
@@ -133,7 +133,9 @@ export class AsciiEngine {
     });
     const bgSave = scene.background; scene.background = null;
     r.shadowMap.autoUpdate = false;
+    this.inIdPass = true;
     r.setRenderTarget(this.rtId); r.setClearColor(this.skyIdColor, 1); r.clear(); r.render(scene, camera);
+    this.inIdPass = false;
     for (const [o, m, v] of swapped) { o.material = m; o.visible = v; }
     scene.background = bgSave;
     // colour pass

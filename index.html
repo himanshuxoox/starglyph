@@ -17,6 +17,8 @@
        text-shadow:0 0 4px #000,0 0 10px #000,0 2px 2px #000}
   #cur{display:inline-block;width:.55em;height:1.05em;background:#7ff7ff;vertical-align:-.15em;margin-left:2px}
   #big{position:absolute;top:560px;left:0;right:0;font:700 120px "Saira Condensed";letter-spacing:6px;opacity:0}
+  #visor{position:absolute;top:250px;left:44px;font:600 21px/1.5 "JetBrains Mono";color:#7ff7ff;opacity:0;text-shadow:0 0 6px #000,0 0 12px rgba(0,200,255,.5);white-space:pre}
+  #glitch{position:absolute;top:520px;left:0;right:0;font:800 64px "JetBrains Mono";letter-spacing:4px;color:#7ff7ff;opacity:0;text-shadow:0 0 18px #0ff,0 0 4px #000}
   #cta{position:absolute;top:900px;left:0;right:0;font:600 26px "JetBrains Mono";color:#7ff7ff;opacity:0;text-shadow:0 0 8px #000}
 </style>
 </head>
@@ -29,9 +31,14 @@
     <div id="cap"></div>
     <div id="big">SIGNAL LOST</div>
     <div id="cta"></div>
+    <div id="visor"></div>
+    <div id="glitch"></div>
   </div>
 </div>
-<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
-<script type="module" src="./episode.js"></script>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+  const id = new URLSearchParams(location.search).get('ep') || '01';
+  import(id === '01' ? './episode.js' : `./episode${id}.js`);
+</script>
 </body>
 </html>

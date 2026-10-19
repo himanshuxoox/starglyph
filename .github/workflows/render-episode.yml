@@ -20,7 +20,7 @@ concurrency: render-episode
 jobs:
   render:
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
 
@@ -45,8 +45,8 @@ jobs:
           EP: ${{ inputs.episode }}
         run: |
           export CHROME_PATH=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux/chrome | head -1)
-          python audio.py episodes/ep${EP}.json ep.wav
-          node render.mjs video ep_noaudio.mp4
+          AUDIO_META_OUT=audio_meta.json node render.mjs video ep_noaudio.mp4
+          if [ -f audio_meta.json ]; then python audio.py episodes/ep${EP}.json ep.wav audio_meta.json; else python audio.py episodes/ep${EP}.json ep.wav; fi
           ffmpeg -y -loglevel error -i ep_noaudio.mp4 -i ep.wav -c:v copy \
             -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -shortest ep${EP}.mp4
 

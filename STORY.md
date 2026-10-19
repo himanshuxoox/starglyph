@@ -17,7 +17,7 @@
 | # | Title | Big visual moment | Cliffhanger |
 |---|-------|-------------------|-------------|
 | 1 | The Signal | Moon landing → crashed mothership lights up → teleport | Wakes up under a giant ring in the sky |
-| 2 | The Coil | Ring arches across the alien sky, twin suns | His HUD fills with alien glyphs: "Y O U . A R E . F A R" |
+| 2 | The Coil | Exploring the ring-world: singing crystals, breathing bellflower pods, skitterlings, lumen-moths, a mirror lake, sky leviathans (driftbacks). Dev befriends a skitterling, Pixel. | Everything flees; his HUD speaks: "Y O U . A R E . F A R ." |
 | 3 | The Hollow | 100 skeletal machines rise out of the grass | ECHO turns his thruster into a weapon |
 | 4 | The Map | Vaelor temple, hologram galaxy, Earth at the edge | 4 keys needed, and one is already gone |
 | 5 | World of Glass | Crystal planet, glass storm | A key is inside a living crystal |

@@ -14,13 +14,16 @@ Optional repo variable: `PUBLISH_SLOTS` (e.g. `19:00` or `12:00,19:00`).
 
 ## Local
     npm ci
-    python audio.py episodes/ep01.json ep.wav
-    EP=01 node render.mjs video ep_noaudio.mp4      # set CHROME_PATH if Chromium isn't auto-found
+    EP=02 AUDIO_META_OUT=audio_meta.json node render.mjs video ep_noaudio.mp4   # set CHROME_PATH if needed
+    python audio.py episodes/ep02.json ep.wav audio_meta.json
     EP=01 node render.mjs stills out 5 20 34        # quick preview frames
 
 ## Layout
 - `engine/ascii.js`: glyph renderer (colour pass + glyph-set ID pass → ASCII shader)
 - `engine/character.js`: Commander Dev Rao (rig + natural gait)
 - `engine/fx.js`: reactive grass, particle bursts
-- `episode.js`: Episode 1 scenes + timeline · `episodes/epXX.json`: captions, event times, YouTube metadata
-- `audio.py`: procedural soundtrack · `upload.py`: YouTube upload · `STORY.md`: story bible
+- `episode.js`: Episode 1 · `episode02.js`: Episode 2 (`index.html?ep=02` picks the scene file)
+- `episodes/epXX.json`: captions, event times, sound cues, YouTube metadata · `episodes/ep02_script.md`: Ep 2 script
+- `engine/creatures.js`: skitterling, bellflower pod, lumen-moths, driftback, crystals
+- `audio.py` (Ep 1) + `audio_v2.py` (Ep 2+, cue-based; footsteps/chimes/puffs come from `audio_meta.json` written by the renderer)
+- `upload.py`: YouTube upload · `STORY.md`: story bible
