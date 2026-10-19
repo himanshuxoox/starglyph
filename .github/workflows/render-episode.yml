@@ -1,0 +1,24 @@
+name: Render episode
+on:
+  workflow_dispatch:
+    inputs:
+      episode: { description: "Episode number (e.g. 01)", required: true, default: "01" }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npx playwright@1.56.1 install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg && pip install numpy scipy
+      - name: Render
+        run: |
+          export CHROME_PATH=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux/chrome | head -1)
+          python3 audio.py episodes/ep${{ inputs.episode }}.json ep.wav
+          node render.mjs video ep_noaudio.mp4
+          ffmpeg -y -i ep_noaudio.mp4 -i ep.wav -c:v copy -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -shortest ep${{ inputs.episode }}.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: "ep${{ inputs.episode }}", path: "ep${{ inputs.episode }}.mp4" }

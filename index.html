@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/600.css">
+<link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/800.css">
+<link rel="stylesheet" href="node_modules/@fontsource/saira-condensed/500.css">
+<link rel="stylesheet" href="node_modules/@fontsource/saira-condensed/700.css">
+<style>
+  html,body{margin:0;padding:0;background:#07080f;overflow:hidden}
+  #wrap{position:relative;width:720px;height:1280px}
+  canvas{display:block}
+  #hud{position:absolute;inset:0;pointer-events:none;color:#fff;text-align:center}
+  #tag{position:absolute;top:112px;left:0;right:0;font:500 22px "Saira Condensed";letter-spacing:3px;opacity:.85;text-transform:uppercase;text-shadow:0 2px 6px #000}
+  #title{position:absolute;top:140px;left:0;right:0;font:700 50px "Saira Condensed";letter-spacing:.5px;text-shadow:0 3px 10px #000}
+  #cap{position:absolute;top:770px;left:50px;right:50px;font:600 31px/1.35 "JetBrains Mono";white-space:pre-wrap;
+       text-shadow:0 0 4px #000,0 0 10px #000,0 2px 2px #000}
+  #cur{display:inline-block;width:.55em;height:1.05em;background:#7ff7ff;vertical-align:-.15em;margin-left:2px}
+  #big{position:absolute;top:560px;left:0;right:0;font:700 120px "Saira Condensed";letter-spacing:6px;opacity:0}
+  #cta{position:absolute;top:900px;left:0;right:0;font:600 26px "JetBrains Mono";color:#7ff7ff;opacity:0;text-shadow:0 0 8px #000}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="720" height="1280"></canvas>
+  <div id="hud">
+    <div id="tag"></div>
+    <div id="title"></div>
+    <div id="cap"></div>
+    <div id="big">SIGNAL LOST</div>
+    <div id="cta"></div>
+  </div>
+</div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module" src="./episode.js"></script>
+</body>
+</html>

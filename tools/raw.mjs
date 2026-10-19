@@ -1,0 +1,10 @@
+import { chromium } from 'playwright-core';
+import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path';
+const ROOT=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
+const srv=http.createServer((q,r)=>{const p=path.join(ROOT,decodeURIComponent(q.url.split('?')[0])); if(!fs.existsSync(p)||fs.statSync(p).isDirectory()){r.writeHead(404);return r.end();} r.writeHead(200,{'Content-Type':p.endsWith('.js')?'text/javascript':p.endsWith('.css')?'text/css':p.endsWith('.json')?'application/json':'text/html'}); fs.createReadStream(p).pipe(r);}).listen(0);
+const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const pg=await b.newPage({viewport:{width:720,height:1280}}); pg.on('console',m=>console.log('[page]',m.text().slice(0,1500))); pg.on('pageerror',e=>console.log('[err]',e.message)); await pg.goto(`http://localhost:${srv.address().port}/index.html`); await pg.waitForFunction('window.READY');
+const t=+process.argv[2];
+const info=await pg.evaluate(t=>{renderAt(t); const {engine,scene,camera,moonH}=__dbg; const r=engine.renderer; r.setRenderTarget(null); r.render(scene,camera); return {cam:camera.position.toArray(), gh: moonH(camera.position.x,camera.position.z)};},t);
+console.log(JSON.stringify(info));
+await (await pg.$('#wrap')).screenshot({path:process.argv[3]}); await b.close(); srv.close();
