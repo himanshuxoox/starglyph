@@ -4,7 +4,8 @@ import { AsciiEngine, SET, tag, smooth, lerp, v3, fbm, hash2, captionAt, clamp01
 import { makeHero, poseHero } from './engine/character.js';
 import { makeGrass, makePool, burst } from './engine/fx.js';
 
-const EP = await (await fetch('./episodes/ep01.json')).json();
+const EP_ID = new URLSearchParams(location.search).get('ep') || '01';
+const EP = await (await fetch(`./episodes/ep${EP_ID}.json`)).json();
 await Promise.all([
   document.fonts.load('800 40px "JetBrains Mono"'), document.fonts.load('600 30px "JetBrains Mono"'),
   document.fonts.load('500 22px "Saira Condensed"'), document.fonts.load('700 50px "Saira Condensed"'),

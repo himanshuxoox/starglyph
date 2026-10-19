@@ -1,24 +1,76 @@
 name: Render episode
+
 on:
   workflow_dispatch:
     inputs:
-      episode: { description: "Episode number (e.g. 01)", required: true, default: "01" }
+      episode:
+        description: "Episode number (e.g. 01)"
+        required: true
+        default: "01"
+      upload:
+        description: "Upload to YouTube after rendering (scheduled for the next PUBLISH_SLOTS time)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency: render-episode
+
 jobs:
   render:
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: 22 }
-      - run: npm ci
-      - run: npx playwright@1.56.1 install --with-deps chromium
-      - run: sudo apt-get update && sudo apt-get install -y ffmpeg && pip install numpy scipy
-      - name: Render
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: |
+          npm ci
+          npx playwright@1.56.1 install --with-deps chromium
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install numpy scipy google-api-python-client google-auth
+
+      - name: Render ep${{ inputs.episode }}
+        env:
+          EP: ${{ inputs.episode }}
         run: |
           export CHROME_PATH=$(ls -d ~/.cache/ms-playwright/chromium-*/chrome-linux/chrome | head -1)
-          python3 audio.py episodes/ep${{ inputs.episode }}.json ep.wav
+          python audio.py episodes/ep${EP}.json ep.wav
           node render.mjs video ep_noaudio.mp4
-          ffmpeg -y -i ep_noaudio.mp4 -i ep.wav -c:v copy -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -shortest ep${{ inputs.episode }}.mp4
-      - uses: actions/upload-artifact@v4
-        with: { name: "ep${{ inputs.episode }}", path: "ep${{ inputs.episode }}.mp4" }
+          ffmpeg -y -loglevel error -i ep_noaudio.mp4 -i ep.wav -c:v copy \
+            -af "loudnorm=I=-14:TP=-1.0:LRA=11" -c:a aac -b:a 192k -shortest ep${EP}.mp4
+
+      - name: Keep the video as a downloadable artifact (14 days)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ep${{ inputs.episode }}
+          path: ep${{ inputs.episode }}.mp4
+          retention-days: 14
+
+      - name: Upload to YouTube
+        if: inputs.upload
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          PUBLISH_SLOTS: ${{ vars.PUBLISH_SLOTS || '19:00' }}
+        run: python upload.py --episode "${{ inputs.episode }}" --file "ep${{ inputs.episode }}.mp4"
+
+      - name: Save upload state
+        if: inputs.upload && success()
+        run: |
+          git config user.name  "starglyph-bot"
+          git config user.email "starglyph-bot@users.noreply.github.com"
+          git add state/uploads.json
+          git commit -m "Uploaded ep${{ inputs.episode }}" || echo "nothing to commit"
+          git pull --rebase && git push

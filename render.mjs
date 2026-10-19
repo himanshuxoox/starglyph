@@ -24,7 +24,7 @@ const browser = await chromium.launch({
 const page = await browser.newPage({ viewport: { width: 720, height: 1280 } });
 page.on('console', m => console.log('[page]', m.text()));
 page.on('pageerror', e => console.error('[page error]', e.message));
-await page.goto(`http://localhost:${port}/index.html`);
+await page.goto(`http://localhost:${port}/index.html?ep=${process.env.EP || "01"}`);
 await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
 const wrap = await page.$('#wrap');
 
