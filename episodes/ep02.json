@@ -1,0 +1,252 @@
+{
+  "episode": 2,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 2 — The Coil",
+  "duration": 105,
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 4.0,
+      "text": "Day 1 on an alien planet."
+    },
+    {
+      "t0": 4.2,
+      "t1": 7.8,
+      "text": "And something\nis watching."
+    },
+    {
+      "t0": 8.6,
+      "t1": 13.6,
+      "text": "Suit log.\nOxygen: 71%."
+    },
+    {
+      "t0": 14.0,
+      "t1": 19.6,
+      "text": "No signal. No Earth.\nJust... this."
+    },
+    {
+      "t0": 21.0,
+      "t1": 27.0,
+      "text": "The crystals here...\nsing."
+    },
+    {
+      "t0": 28.0,
+      "t1": 34.5,
+      "text": "Every touch,\na new note."
+    },
+    {
+      "t0": 36.0,
+      "t1": 42.0,
+      "text": "Everything here\nreacts to him."
+    },
+    {
+      "t0": 44.4,
+      "t1": 49.6,
+      "text": "...sometimes\na little too much."
+    },
+    {
+      "t0": 51.0,
+      "t1": 56.0,
+      "text": "Most of them ran."
+    },
+    {
+      "t0": 57.0,
+      "t1": 64.6,
+      "text": "One of them...\nwasn't afraid."
+    },
+    {
+      "t0": 66.0,
+      "t1": 71.5,
+      "text": "He called it Pixel."
+    },
+    {
+      "t0": 73.0,
+      "t1": 79.6,
+      "text": "Something was\nunder the lake."
+    },
+    {
+      "t0": 81.0,
+      "t1": 86.0,
+      "text": "He wasn't alone\non this planet."
+    },
+    {
+      "t0": 86.5,
+      "t1": 91.6,
+      "text": "Not even close."
+    },
+    {
+      "t0": 92.8,
+      "t1": 95.8,
+      "text": "Then... silence."
+    },
+    {
+      "t0": 96.2,
+      "t1": 99.4,
+      "text": "Everything ran."
+    },
+    {
+      "t0": 99.8,
+      "t1": 102.0,
+      "text": "His helmet spoke:"
+    }
+  ],
+  "events": {
+    "glitch_text": [
+      100.3,
+      104.2
+    ],
+    "cta": [
+      102.6,
+      105.0
+    ],
+    "silence": [
+      92.0,
+      99.6
+    ]
+  },
+  "youtube": {
+    "title": "He found life on an alien planet… then everything ran 👽 | Signal Lost Ep 2",
+    "description": "Day 1 on the ring-world. Singing crystals, breathing flowers, a tiny friend named Pixel… and something under the lake.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every week.\n\n▶ Ep 1: He touched one panel on the Moon… big mistake.\n▶ Ep 3 next week: The Hollow.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "alien planet",
+      "alien creatures",
+      "astronaut",
+      "ring world",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 0,
+      "t1": 93,
+      "gain": 0.035
+    },
+    {
+      "type": "wind",
+      "t0": 0,
+      "t1": 105,
+      "gain": 0.05,
+      "gust": [
+        8,
+        20,
+        1.8
+      ]
+    },
+    {
+      "type": "night",
+      "t0": 0,
+      "t1": 92,
+      "gain": 0.05
+    },
+    {
+      "type": "eyes",
+      "t": 0.9
+    },
+    {
+      "type": "hud",
+      "t": 8.8
+    },
+    {
+      "type": "chitter",
+      "t": 52.0,
+      "dur": 2.2,
+      "gain": 0.22
+    },
+    {
+      "type": "chitter",
+      "t": 55.4,
+      "dur": 3.2,
+      "gain": 0.1
+    },
+    {
+      "type": "coo",
+      "t": 60.3
+    },
+    {
+      "type": "flutter",
+      "t0": 68,
+      "t1": 92.6,
+      "gain": 0.05
+    },
+    {
+      "type": "under",
+      "t": 73.8,
+      "gain": 0.3
+    },
+    {
+      "type": "whale",
+      "t": 81.0,
+      "dur": 4.5,
+      "gain": 0.7
+    },
+    {
+      "type": "whale",
+      "t": 85.4,
+      "dur": 5.0,
+      "pitch": 0.85,
+      "gain": 0.7
+    },
+    {
+      "type": "whale",
+      "t": 88.6,
+      "dur": 3.4,
+      "pitch": 1.15,
+      "gain": 0.7
+    },
+    {
+      "type": "silence",
+      "t0": 92.0,
+      "t1": 99.6
+    },
+    {
+      "type": "heartbeat",
+      "t0": 93.0,
+      "t1": 99.6,
+      "gain": 0.7
+    },
+    {
+      "type": "rustle",
+      "t0": 94.0,
+      "t1": 101.5,
+      "gain": 0.25
+    },
+    {
+      "type": "scurry",
+      "t": 95.8,
+      "dur": 2.4,
+      "gain": 0.6
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 96,
+      "t1": 105,
+      "gain": 0.12
+    },
+    {
+      "type": "glitch",
+      "t0": 100.2,
+      "t1": 104.2,
+      "gain": 1.0
+    },
+    {
+      "type": "voice",
+      "t": 101.3
+    },
+    {
+      "type": "hit",
+      "t": 102.6,
+      "gain": 0.6
+    }
+  ]
+}
