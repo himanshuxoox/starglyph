@@ -131,14 +131,115 @@ def main(ep_path, out_path, meta_path=None):
             n = int(3 * SR); tt = np.arange(n) / SR
             add((np.sin(2 * np.pi * 45 * tt) + 0.5 * np.sin(2 * np.pi * 90 * tt)) * np.exp(-tt * 1.4) + lp(noise(3), 200) * np.exp(-tt * 2) * 2, c["t"], 0.5 * g)
 
+        # ---------------- Ep 3 (action) ----------------
+        elif k == "pulse":                              # driving action bed: bass ostinato + kick + hats
+            bpm = c.get("bpm", 132); beat = 60 / bpm; e = ramp(c["t0"], c["t1"], c.get("a", 1.0), c.get("r", 1.0)) * g
+            bass = np.zeros(N); notes = c.get("notes", [55.0, 55.0, 65.41, 49.0])
+            tb = c["t0"]; i = 0
+            while tb < c["t1"]:
+                f = notes[(i // 4) % len(notes)]; n = int(beat / 2 * SR); tt = np.arange(n) / SR
+                saw = 2 * ((f * tt) % 1) - 1
+                env = np.exp(-tt * 18); note = (lp(saw, 1400) * env + lp(saw, 450) * (1 - env)) * np.exp(-tt * 5)   # filter 'pluck'
+                j = int(tb * SR); m = min(n, N - j)
+                if m > 0: bass[j:j + m] += note[:m]
+                if i % 2 == 0: add(tone(52, 0.35, 11, (1, 1.5)) + lp(noise(0.35), 150) * envd(int(0.35 * SR), 0.001, 25), tb, 0.55 * g / max(g, 1e-6) * float(e[min(N - 1, int(tb * SR))]))
+                add(hp(noise(0.03), 6000) * envd(int(0.03 * SR), 0.0005, 120), tb + beat / 4, 0.12 * float(e[min(N - 1, int(tb * SR))]) / max(g, 1e-6) * g, pan=0.3)
+                tb += beat / 2; i += 1
+            L += bass * e * 0.6; R += bass * e * 0.6
+        elif k == "stinger":                            # something appears: reverse swell -> hit -> shimmer
+            n = int(1.6 * SR); tt = np.arange(n) / SR
+            sw = bp(noise(1.6), 300, 5000) * (tt / 1.6) ** 3
+            add(sw, c["t"] - 1.6, 0.5 * g)
+            add((np.sin(2 * np.pi * 41 * tt) + 0.6 * np.sin(2 * np.pi * 61.7 * tt)) * np.exp(-tt * 2.2), c["t"], 0.9 * g)
+            for f in (1661, 2217, 2960): add(tone(f, 1.5, 2.5, (1, 1.003)), c["t"], 0.05 * g, pan=rng.uniform(-0.5, 0.5))
+        elif k == "creak":                              # bone-metal servos and clicks
+            for i in range(int((c["t1"] - c["t0"]) * c.get("rate", 9))):
+                tt = c["t0"] + rng.uniform(0, c["t1"] - c["t0"]); f = rng.uniform(180, 900)
+                add(tone(f, 0.12, 30, (1, 2.37, 3.9), amp=[1, 0.5, 0.3]) + np.pad(hp(noise(0.01), 3000) * envd(int(0.01 * SR), 0.0003, 500) * 0.5, (0, int(0.12 * SR) - int(0.01 * SR))), tt, g * rng.uniform(0.3, 1), pan=c.get("pan", 0) + rng.uniform(-0.3, 0.3))
+        elif k == "screech":                            # the scout screams
+            dur = c.get("dur", 1.4); n = int(dur * SR); tt = np.arange(n) / SR
+            f = 900 + 700 * np.sin(np.pi * tt / dur) + 60 * np.sin(2 * np.pi * 31 * tt)
+            ph = 2 * np.pi * np.cumsum(f) / SR
+            v = (np.sign(np.sin(ph)) * 0.4 + bp(noise(dur), 1500, 5000) * 0.8) * np.sin(np.pi * tt / dur) ** 0.6
+            v = bp(v, 600, 6000)
+            add(v, c["t"], 0.35 * g, pan=c.get("pan", 0.2)); add(v, c["t"] + 0.18, 0.12 * g, pan=-0.4)
+        elif k == "rumble":                             # the ground splits
+            e = ramp(c["t0"], c["t1"], 0.6, 2.0) * g
+            r = lp(rng.standard_normal(N), 90) * 6 + lp(rng.standard_normal(N), 400) * (0.4 + 0.6 * np.abs(np.sin(2 * np.pi * 1.3 * t)))
+            L += r * e; R += np.roll(r, 300) * e
+        elif k == "thruster":
+            e = ramp(c["t0"], c["t1"], 0.25, 0.3) * g
+            th = bp(rng.standard_normal(N), 200, 3000) + lp(rng.standard_normal(N), 120) * 3
+            L += th * e; R += np.roll(th, 200) * e
+        elif k == "boom":                               # the slam: sub drop, blast, debris tail
+            n = int(4 * SR); tt = np.arange(n) / SR
+            f = 70 * np.exp(-tt * 0.8) + 28; sub = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 0.9)
+            blast = lp(noise(4), 1800) * np.exp(-tt * 3.5) * 2.2 + bp(noise(4), 2000, 8000) * np.exp(-tt * 6)
+            add(sub * 1.4 + blast, c["t"], 0.8 * g); add(blast * 0.4, c["t"] + 0.12, 0.3 * g, pan=0.6); add(blast * 0.3, c["t"] + 0.25, 0.25 * g, pan=-0.6)
+        elif k == "breath":                             # heavy breathing inside the helmet
+            tb = c["t0"]; rate = c.get("rate", 0.8)
+            while tb < c["t1"]:
+                for dt, d, gg in ((0, rate * 0.4, 1.0), (rate * 0.45, rate * 0.5, 0.7)):
+                    n = int(d * SR); tt = np.arange(n) / SR
+                    add(bp(noise(d), 500, 2500) * np.sin(np.pi * tt / d) ** 2, tb + dt, 0.22 * g * gg)
+                tb += rate
+        elif k == "signal":                             # the skull's red signal
+            tb = c["t0"]
+            while tb < c["t1"]:
+                for i, f in enumerate((1318.5, 987.8, 739.99)): add(tone(f, 0.18, 14, (1, 3.01), amp=[1, 0.3]), tb + i * 0.13, 0.1 * g, pan=-0.2)
+                tb += c.get("every", 1.6)
+            e = ramp(c["t0"], c["t1"], 2, 1) * g; hum = np.sin(2 * np.pi * 110 * t) * (0.6 + 0.4 * np.sin(2 * np.pi * 6 * t))
+            L += hum * e * 0.08; R += hum * e * 0.08
+        elif k == "armada":                             # deep horns as the red lights appear
+            e = ramp(c["t0"], c["t1"], 3, 1.5) * g
+            hn = np.zeros(N)
+            for f in (36.7, 55.0, 73.4, 77.8):
+                hn += np.sin(2 * np.pi * f * t + 2 * np.sin(2 * np.pi * 0.3 * t)) + 0.4 * np.sin(2 * np.pi * f * 3.01 * t)
+            hn = lp(hn, 600)
+            L += hn * e; R += np.roll(hn, 900) * e
+        elif k == "echo_voice":                         # ECHO's lines: cold, low, formant-filtered machine voice
+            for line in ep.get("echo", []):
+                words = [w for w in line["text"].replace("\n", " ").split(" ") if w]
+                tb = line["t0"] + 0.15
+                for w in words:
+                    syl = max(1, sum(ch in "AEIOUY" for ch in w.upper())) if len(w) > 1 else 1
+                    for si in range(syl):
+                        dur = 0.2 if len(w) <= 2 else 0.26; n = int(dur * SR); tt = np.arange(n) / SR
+                        f0 = 88 + 10 * ((sum(map(ord, w)) + si) % 3)
+                        buzz = np.sign(np.sin(2 * np.pi * f0 * tt)) * 0.6 + np.sin(2 * np.pi * f0 * 2 * tt) * 0.3
+                        fm = 450 + 250 * ((si + len(w)) % 3)
+                        v = bp(buzz, fm * 0.6, fm * 1.4) + 0.6 * bp(buzz, 1300, 2600) + 0.15 * np.sin(2 * np.pi * 2093 * tt)
+                        v *= np.clip(tt / 0.02, 0, 1) * np.clip((dur - tt) / 0.05, 0, 1)
+                        add(v, tb, 0.5 * g); add(v, tb + 0.09, 0.15 * g, pan=0.5)
+                        tb += dur + 0.03
+                    tb += 0.12
+
     # ---- cues derived from the animation ----
     for f in meta.get("foot", []):
         n = int(0.09 * SR)
         if f["water"]:
             add(bp(noise(0.25), 400, 2500) * envd(int(0.25 * SR), 0.003, 12), f["t"], 0.35)
             add(tone(rng.uniform(600, 900), 0.1, 30), f["t"] + 0.04, 0.08)
+        elif f.get("run"):
+            add(bp(noise(0.11), 300, 3000) * envd(int(0.11 * SR), 0.002, 26), f["t"], 0.17, pan=rng.uniform(-0.15, 0.15))
+            add(tone(70, 0.08, 40), f["t"], 0.12)
         else:
             add(bp(noise(0.09), 1200, 5000) * envd(n, 0.002, 30), f["t"], 0.09, pan=rng.uniform(-0.15, 0.15))
+    for tt in meta.get("shots", []):                    # carbine: crack + plasma zap
+        n = int(0.25 * SR); x = np.arange(n) / SR
+        zap = np.sin(2 * np.pi * np.cumsum(2400 * np.exp(-x * 30) + 300) / SR) * np.exp(-x * 22)
+        add(hp(noise(0.25), 800) * np.exp(-x * 45) * 1.5 + zap * 0.6 + np.sin(2 * np.pi * 80 * x) * np.exp(-x * 25), tt, 0.32, pan=rng.uniform(-0.1, 0.1))
+    for tt in meta.get("hits", []):                     # a Hollow shatters into glyph dust
+        for i in range(14): add(np.pad(hp(noise(0.03), 3000) * envd(int(0.03 * SR), 0.0005, 160) * 0.8, (0, int(0.06 * SR) - int(0.03 * SR))) + tone(rng.uniform(2500, 6000), 0.06, 50), tt + rng.uniform(0, 0.35), 0.16, pan=rng.uniform(-0.5, 0.5))
+        add(lp(noise(0.4), 400) * envd(int(0.4 * SR), 0.002, 8), tt, 0.3)
+    for tt in meta.get("blows", [])[::3]:
+        for i in range(5): add(np.pad(hp(noise(0.02), 3000) * envd(int(0.02 * SR), 0.0005, 200), (0, int(0.05 * SR) - int(0.02 * SR))) + tone(rng.uniform(2000, 5000), 0.05, 60), tt + rng.uniform(0, 0.25), 0.07, pan=rng.uniform(-0.8, 0.8))
+    for tt in meta.get("rises", []):                    # soil breaking as each one claws up
+        add(lp(noise(0.5), 700) * envd(int(0.5 * SR), 0.01, 7), tt, 0.1, pan=rng.uniform(-0.8, 0.8))
+        add(tone(rng.uniform(200, 500), 0.1, 35, (1, 2.37)), tt + 0.5, 0.05, pan=rng.uniform(-0.8, 0.8))
+    for i, tt in enumerate(meta.get("crystals", [])):   # crystals ring as he (and it) runs past
+        f = PENTA[(i * 3) % len(PENTA)]
+        add(tone(f, 2.0, 1.8, (1, 2.76, 5.4), amp=[1, 0.4, 0.2]), tt, 0.09, pan=rng.uniform(-0.5, 0.5))
     for c in meta.get("chimes", []):                    # crystals ring a pentatonic melody
         f = PENTA[c["note"] % len(PENTA)] * (2 if c["note"] >= len(PENTA) else 1)
         bell = tone(f, 3.0, 1.3, (1, 2.76, 5.4, 8.93), amp=[1, 0.45, 0.25, 0.12])

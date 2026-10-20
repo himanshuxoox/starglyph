@@ -44,15 +44,18 @@ const world = new THREE.Group(); scene.add(world);
   // sky: deep blue zenith -> violet -> magenta horizon glow, nebula clouds (palette from the concept art)
   const skyTex = canvasTex(1024, 512, (g, w, h) => {
     const gr = g.createLinearGradient(0, 0, 0, h);
-    gr.addColorStop(0, '#040824'); gr.addColorStop(0.28, '#0b1144'); gr.addColorStop(0.43, '#2a1664'); gr.addColorStop(0.49, '#8a3a9a');
-    gr.addColorStop(0.505, '#3a1a5a'); gr.addColorStop(1, '#0a0618');
+    // soft wide horizon glow (was a 2%-tall hard stripe that read as a flat backdrop)
+    gr.addColorStop(0, '#040824'); gr.addColorStop(0.26, '#0b1144'); gr.addColorStop(0.38, '#221660'); gr.addColorStop(0.46, '#5a2a86');
+    gr.addColorStop(0.5, '#7a3494'); gr.addColorStop(0.54, '#3a1a5a'); gr.addColorStop(1, '#0a0618');
     g.fillStyle = gr; g.fillRect(0, 0, w, h);
     for (let i = 0; i < 26; i++) {
-      const x = hash2(i, 41) * w, y = 40 + hash2(i, 43) * 190, r = 30 + hash2(i, 45) * 110;
-      const rg = g.createRadialGradient(x, y, 0, x, y, r);
+      const y = 40 + hash2(i, 43) * 190, r = 30 + hash2(i, 45) * 110;
       const c = [['120,70,230', 0.32], ['200,70,200', 0.26], ['60,110,255', 0.3]][i % 3];
-      rg.addColorStop(0, `rgba(${c[0]},${c[1]})`); rg.addColorStop(1, 'rgba(0,0,0,0)');
-      g.fillStyle = rg; g.fillRect(0, 0, w, h);
+      for (const ox of [-w, 0, w]) {                        // drawn wrapped so the texture seam (u=0/1) matches
+        const x = hash2(i, 41) * w + ox, rg = g.createRadialGradient(x, y, 0, x, y, r);
+        rg.addColorStop(0, `rgba(${c[0]},${c[1]})`); rg.addColorStop(1, 'rgba(0,0,0,0)');
+        g.fillStyle = rg; g.fillRect(0, 0, w, h);
+      }
     }
   });
   world.add(tag(new THREE.Mesh(new THREE.SphereGeometry(3000, 48, 24), new THREE.MeshBasicMaterial({ map: skyTex, side: THREE.BackSide, depthWrite: false, fog: false })), SET.SKY));

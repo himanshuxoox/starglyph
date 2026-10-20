@@ -1,0 +1,344 @@
+{
+  "episode": 3,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 3 — The Hollow",
+  "duration": 105,
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 3.8,
+      "text": "Last time...\neverything ran."
+    },
+    {
+      "t0": 4.0,
+      "t1": 7.8,
+      "text": "Then the grass\nstopped moving."
+    },
+    {
+      "t0": 12.9,
+      "t1": 15.9,
+      "text": "Something was\nalready there."
+    },
+    {
+      "t0": 23.0,
+      "t1": 26.6,
+      "text": "He ran."
+    },
+    {
+      "t0": 31.0,
+      "t1": 35.4,
+      "text": "It didn't stop."
+    },
+    {
+      "t0": 43.6,
+      "t1": 47.4,
+      "text": "It wasn't alone."
+    },
+    {
+      "t0": 48.4,
+      "t1": 53.6,
+      "text": "There were\nhundreds."
+    },
+    {
+      "t0": 56.6,
+      "t1": 60.4,
+      "text": "He'd never fired\na gun before."
+    },
+    {
+      "t0": 61.0,
+      "t1": 64.6,
+      "text": "It didn't matter."
+    },
+    {
+      "t0": 74.6,
+      "t1": 79.6,
+      "text": "His suit moved...\non its own."
+    },
+    {
+      "t0": 92.6,
+      "t1": 96.8,
+      "text": "The scout's head\nwas still sending."
+    }
+  ],
+  "echo": [
+    {
+      "t0": 16.4,
+      "t1": 19.1,
+      "text": "H O L L O W"
+    },
+    {
+      "t0": 19.3,
+      "t1": 21.9,
+      "text": "RUN."
+    },
+    {
+      "t0": 65.2,
+      "t1": 67.6,
+      "text": "LET ME."
+    },
+    {
+      "t0": 86.0,
+      "t1": 88.7,
+      "text": "I AM ECHO."
+    },
+    {
+      "t0": 89.0,
+      "t1": 91.9,
+      "text": "I WAS THE SHIP."
+    },
+    {
+      "t0": 97.6,
+      "t1": 101.4,
+      "text": "IT CALLED\nTHE OTHERS."
+    }
+  ],
+  "events": {
+    "cta": [
+      101.6,
+      105.0
+    ]
+  },
+  "youtube": {
+    "title": "The planet sent its army… so his suit took over 💀 | Signal Lost Ep 3",
+    "description": "Night falls on the ring-world. The grass stops moving. Something steps out of thin air... and it isn't alone.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every week.\n\n▶ Ep 1: He touched one panel on the Moon… big mistake.\n▶ Ep 2: The Coil.\n▶ Ep 4 next week: The Map.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "alien army",
+      "robot skeleton",
+      "astronaut",
+      "ring world",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "wind",
+      "t0": 0,
+      "t1": 105,
+      "gain": 0.04,
+      "gust": [
+        22,
+        40,
+        1.6
+      ]
+    },
+    {
+      "type": "night",
+      "t0": 0,
+      "t1": 4.5,
+      "gain": 0.045
+    },
+    {
+      "type": "rustle",
+      "t0": 0.5,
+      "t1": 7.6,
+      "gain": 0.28
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 0,
+      "t1": 22.4,
+      "gain": 0.09
+    },
+    {
+      "type": "silence",
+      "t0": 6.8,
+      "t1": 9.2
+    },
+    {
+      "type": "heartbeat",
+      "t0": 8.2,
+      "t1": 16.2,
+      "gain": 0.6
+    },
+    {
+      "type": "stinger",
+      "t": 12.5,
+      "gain": 1.0
+    },
+    {
+      "type": "breath",
+      "t0": 9.6,
+      "t1": 22.2,
+      "rate": 0.95,
+      "gain": 0.8
+    },
+    {
+      "type": "creak",
+      "t0": 9.0,
+      "t1": 22.3,
+      "rate": 5,
+      "gain": 0.14
+    },
+    {
+      "type": "hud",
+      "t": 16.2,
+      "gain": 0.8
+    },
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "screech",
+      "t": 22.5,
+      "dur": 1.3,
+      "gain": 0.9
+    },
+    {
+      "type": "pulse",
+      "t0": 22.3,
+      "t1": 40.7,
+      "bpm": 140,
+      "gain": 0.5,
+      "a": 0.3,
+      "r": 0.4
+    },
+    {
+      "type": "creak",
+      "t0": 22.6,
+      "t1": 40.5,
+      "rate": 14,
+      "gain": 0.1,
+      "pan": -0.3
+    },
+    {
+      "type": "flutter",
+      "t0": 29.4,
+      "t1": 33.0,
+      "gain": 0.05
+    },
+    {
+      "type": "screech",
+      "t": 40.3,
+      "dur": 1.9,
+      "gain": 1.0
+    },
+    {
+      "type": "stinger",
+      "t": 41.0,
+      "gain": 0.8
+    },
+    {
+      "type": "rumble",
+      "t0": 41.0,
+      "t1": 50.0,
+      "gain": 0.22
+    },
+    {
+      "type": "creak",
+      "t0": 41.5,
+      "t1": 72.5,
+      "rate": 24,
+      "gain": 0.07
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 41,
+      "t1": 67.5,
+      "gain": 0.13
+    },
+    {
+      "type": "pulse",
+      "t0": 55.2,
+      "t1": 67.5,
+      "bpm": 150,
+      "gain": 0.45,
+      "notes": [
+        49.0,
+        49.0,
+        58.27,
+        43.65
+      ],
+      "a": 0.6,
+      "r": 0.3
+    },
+    {
+      "type": "hud",
+      "t": 66.0,
+      "gain": 1.0
+    },
+    {
+      "type": "thruster",
+      "t0": 67.6,
+      "t1": 72.6,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 72.4,
+      "gain": 1.0
+    },
+    {
+      "type": "creak",
+      "t0": 73.0,
+      "t1": 78.0,
+      "rate": 10,
+      "gain": 0.06
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 75.5,
+      "t1": 92.5,
+      "gain": 0.024
+    },
+    {
+      "type": "breath",
+      "t0": 80.0,
+      "t1": 88.5,
+      "rate": 0.55,
+      "gain": 1.0
+    },
+    {
+      "type": "coo",
+      "t": 83.9,
+      "gain": 0.9
+    },
+    {
+      "type": "hud",
+      "t": 86.0,
+      "gain": 0.7
+    },
+    {
+      "type": "signal",
+      "t0": 91.0,
+      "t1": 105,
+      "gain": 0.8,
+      "every": 1.6
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 92,
+      "t1": 105,
+      "gain": 0.14
+    },
+    {
+      "type": "armada",
+      "t0": 95.0,
+      "t1": 105,
+      "gain": 0.09
+    },
+    {
+      "type": "glitch",
+      "t0": 97.5,
+      "t1": 98.3,
+      "gain": 0.6
+    },
+    {
+      "type": "hit",
+      "t": 101.6,
+      "gain": 0.6
+    }
+  ]
+}

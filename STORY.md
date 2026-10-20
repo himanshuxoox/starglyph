@@ -18,7 +18,7 @@
 |---|-------|-------------------|-------------|
 | 1 | The Signal | Moon landing → crashed mothership lights up → teleport | Wakes up under a giant ring in the sky |
 | 2 | The Coil | Exploring the ring-world: singing crystals, breathing bellflower pods, skitterlings, lumen-moths, a mirror lake, sky leviathans (driftbacks). Dev befriends a skitterling, Pixel. | Everything flees; his HUD speaks: "Y O U . A R E . F A R ." |
-| 3 | The Hollow | 100 skeletal machines rise out of the grass | ECHO turns his thruster into a weapon |
+| 3 | The Hollow | Night. A cloaked Hollow scout de-cloaks 2 m from Dev, chases him round the lake, and ~120 skeletal machines claw up out of the grass. Dev fires a gun for the first time. ECHO takes over the suit ("LET ME."), boost-jumps over the army and slams down a shockwave. On a hilltop: "I AM ECHO. I WAS THE SHIP." | The scout's broken skull beams a red signal; hundreds of red ships appear among the stars: "IT CALLED THE OTHERS." |
 | 4 | The Map | Vaelor temple, hologram galaxy, Earth at the edge | 4 keys needed, and one is already gone |
 | 5 | World of Glass | Crystal planet, glass storm | A key is inside a living crystal |
 | 6 | The Drowned Moon | Ocean world, moonlight reflections | Something huge under the water |

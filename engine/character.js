@@ -43,7 +43,7 @@ export function makeHero() {
   add(cap(0.11, 0.2), armour, 0, 0.36, -0.2, torso, 1.25, 1, 0.75);
   add(new THREE.CylinderGeometry(0.035, 0.035, 0.26, 10), fabricDark, 0.1, 0.36, -0.27, torso);
   add(new THREE.CylinderGeometry(0.035, 0.035, 0.26, 10), fabricDark, -0.1, 0.36, -0.27, torso);
-  const gun = new THREE.Group(); gun.position.set(0, 0.34, -0.32); gun.rotation.set(0, 0, 0.9); torso.add(gun);
+  const gun = new THREE.Group(); gun.position.set(0, 0.34, -0.32); gun.rotation.set(0, 0, 0.9); gun.scale.setScalar(0.8); torso.add(gun);
   add(new THREE.BoxGeometry(0.07, 0.62, 0.09), gunMat, 0, 0, 0, gun);
   add(new THREE.CylinderGeometry(0.02, 0.02, 0.26, 8), gunMat, 0, 0.42, 0, gun);
   add(new THREE.BoxGeometry(0.02, 0.3, 0.02), cyan, 0.04, 0.02, 0.03, gun);
@@ -93,20 +93,40 @@ export function makeHero() {
     return { shoulder, joint };
   };
   const armL = limb(1, true), armR = limb(-1, true), legL = limb(1, false), legR = limb(-1, false);
+  // carbine held in the right hand (hidden until drawn); muzzle marker at the barrel tip
+  const handGun = new THREE.Group(); handGun.position.set(0, -0.31, 0.04); handGun.rotation.x = Math.PI / 2; armR.joint.add(handGun); handGun.visible = false;  // barrel along the forearm
+  add(new THREE.BoxGeometry(0.07, 0.09, 0.5), gunMat, 0, 0, 0.12, handGun);
+  add(new THREE.CylinderGeometry(0.02, 0.02, 0.24, 8), gunMat, 0, 0.01, 0.48, handGun).rotation.x = Math.PI / 2;
+  add(new THREE.BoxGeometry(0.02, 0.02, 0.3), cyan, 0.04, 0.03, 0.1, handGun);
+  add(new THREE.BoxGeometry(0.05, 0.14, 0.06), gunMat, 0, -0.08, 0.02, handGun).rotation.x = 0.3;     // grip
+  const muzzle = new THREE.Object3D(); muzzle.position.set(0, 0.01, 0.62); handGun.add(muzzle);
+  // suit thrusters on the life-support pack (flame length driven by poseHero opts.jet)
+  const jets = new THREE.Group(); jets.position.set(0, 0.22, -0.3); torso.add(jets);
+  const jetMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.5, 1.8, 2.4), fog: false, transparent: true, opacity: 0.9, depthWrite: false });
+  for (const sx of [-0.1, 0.1]) {
+    add(new THREE.CylinderGeometry(0.04, 0.05, 0.08, 10), gunMat, sx, 0, 0, jets);
+    const f = add(new THREE.ConeGeometry(0.05, 1, 10), jetMat, sx, -0.5, 0, jets); f.rotation.x = Math.PI; f.castShadow = false; f.userData.flame = true;
+  }
+  // breath fog on the inside of the visor
+  const fogMat = new THREE.MeshBasicMaterial({ color: 0xcfe6ff, transparent: true, opacity: 0, depthWrite: false, fog: false });
+  const breath = add(new THREE.SphereGeometry(0.165, 16, 10, FRONT - 0.5, 1.0, Math.PI * 0.45, Math.PI * 0.3), fogMat, 0, 0.005, 0, head, 1, 1.05, 1);
+  breath.castShadow = false;
   // attachment markers (world positions for props/creatures)
   const handR = new THREE.Object3D(); handR.position.set(0, -0.33, 0.05); armR.joint.add(handR);
   const pocket = new THREE.Object3D(); pocket.position.set(0.09, 0.4, 0.17); torso.add(pocket);
   const shoulderL = new THREE.Object3D(); shoulderL.position.set(0.21, 0.66, -0.02); torso.add(shoulderL);
 
   tag(root, SET.SUIT);
-  root.traverse(o => { if (o.isMesh && o.material === cyan) o.userData.set = SET.ENERGY; if (o.isMesh && o.material === glass) o.userData.noId = true; });
+  root.traverse(o => { if (o.isMesh && (o.material === cyan || o.material === jetMat)) o.userData.set = SET.ENERGY; if (o.isMesh && (o.material === glass || o.material === fogMat)) o.userData.noId = true; });
+  jets.visible = false;
 
-  return { root, body, pelvis, torso, chest: chestMesh, neck, head, armL, armR, legL, legR, gun, headLight, cyanMat: cyan, height: 1.86, handR, pocket, shoulderL };
+  return { root, body, pelvis, torso, chest: chestMesh, neck, head, armL, armR, legL, legR, gun, headLight, cyanMat: cyan, height: 1.86, handR, pocket, shoulderL,
+    handGun, muzzle, jets, jetMat, fogMat };
 }
 
 // Natural human pose. walk 0..1, phase radians, t seconds (idle breathing), reach 0..1 right hand forward,
 // crouch 0..1 (kneeling on right knee), lookUp -1..1
-export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp = 0, armRo = null, armLo = null, headYaw = 0 } = {}, t = 0) {
+export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp = 0, armRo = null, armLo = null, headYaw = 0, run = 0, jet = 0, lean = 0 } = {}, t = 0) {
   const s = Math.sin(phase), c = Math.cos(phase);
   const sR = Math.sin(phase + Math.PI), cR = Math.cos(phase + Math.PI);
   const kneeSwing = x => Math.max(0, x) ** 1.4;
@@ -132,6 +152,25 @@ export function poseHero(h, { walk = 0, phase = 0, reach = 0, crouch = 0, lookUp
   h.armL.joint.rotation.set(-0.18 - 0.35 * Math.max(0, -armSwingL / 0.42) * walk - crouch * 0.7, 0, 0);
   h.armR.shoulder.rotation.set(armSwingR * (1 - reach) - reach * 1.35 + crouch * -0.15, 0, -0.1 - idle * 0.04 + reach * 0.12);
   h.armR.joint.rotation.set((-0.18 - 0.35 * Math.max(0, -armSwingR / 0.42) * walk) * (1 - reach) - reach * 0.12, 0, 0);
+
+  // sprint: bigger strides, high knees, pumping bent arms, forward lean
+  if (run > 0) {
+    const R = run;
+    h.legL.shoulder.rotation.x += (-0.95 * s - 0.25) * R - h.legL.shoulder.rotation.x * R * 0.5;
+    h.legR.shoulder.rotation.x += (-0.95 * sR - 0.25) * R - h.legR.shoulder.rotation.x * R * 0.5;
+    h.legL.joint.rotation.x += (1.9 * kneeSwing(c) + 0.25) * R;
+    h.legR.joint.rotation.x += (1.9 * kneeSwing(cR) + 0.25) * R;
+    h.body.position.y += (0.06 * Math.cos(2 * phase) - 0.07) * R;
+    h.torso.rotation.x += 0.28 * R;
+    h.armL.shoulder.rotation.x = h.armL.shoulder.rotation.x * (1 - R) + (0.9 * sR - 0.2) * R;
+    h.armR.shoulder.rotation.x = h.armR.shoulder.rotation.x * (1 - R) + (0.9 * s - 0.2) * R;
+    h.armL.joint.rotation.x = h.armL.joint.rotation.x * (1 - R) - 1.45 * R;
+    h.armR.joint.rotation.x = h.armR.joint.rotation.x * (1 - R) - 1.45 * R;
+  }
+  h.torso.rotation.x += lean;
+  // thrusters
+  h.jets.visible = jet > 0.01;
+  h.jets.children.forEach(m => { if (m.userData.flame) { const L = 0.15 + jet * (1.1 + 0.25 * Math.sin(t * 47 + m.position.x * 9)); m.scale.set(1 + jet * 0.6, L, 1 + jet * 0.6); m.position.y = -L / 2 - 0.04; } });
 
   // head stays level (counters torso), looks around
   h.neck.rotation.set(-0.06 * walk - lookUp * 0.5 - crouch * 0.15, -0.1 * s * walk, 0);

@@ -22,8 +22,9 @@ Optional repo variable: `PUBLISH_SLOTS` (e.g. `19:00` or `12:00,19:00`).
 - `engine/ascii.js`: glyph renderer (colour pass + glyph-set ID pass → ASCII shader)
 - `engine/character.js`: Commander Dev Rao (rig + natural gait)
 - `engine/fx.js`: reactive grass, particle bursts
-- `episode.js`: Episode 1 · `episode02.js`: Episode 2 (`index.html?ep=02` picks the scene file)
-- `episodes/epXX.json`: captions, event times, sound cues, YouTube metadata · `episodes/ep02_script.md`: Ep 2 script
+- `episode.js`: Episode 1 · `episode02.js`: Episode 2 · `episode03.js`: Episode 3 (`index.html?ep=03` picks the scene file)
+- `engine/sky.js`: night sky (seamless nebula dome, ringed gas giant, rock spires, red armada) · `engine/hollow.js`: the Hollow (scout + instanced army)
+- `episodes/epXX.json`: captions, event times, sound cues, YouTube metadata · `episodes/ep02_script.md`, `ep03_script.md`: scripts
 - `engine/creatures.js`: skitterling, bellflower pod, lumen-moths, driftback, crystals
 - `audio.py` (Ep 1) + `audio_v2.py` (Ep 2+, cue-based; footsteps/chimes/puffs come from `audio_meta.json` written by the renderer)
 - `upload.py`: YouTube upload · `STORY.md`: story bible

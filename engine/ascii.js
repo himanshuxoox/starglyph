@@ -7,7 +7,7 @@ export const GLYPH_SETS = [
   ' .,:;+*xoXO0#%&@',   // 0 generic / props
   ' .`\',:;*+xo%#&@$',  // 1 regolith / rock
   ' .:+|/\\[]{}=#ΞΣ@',  // 2 hull / alien metal / crystal
-  ' .\'`*+xX*+oO0#@&',  // 3 sky (procedural stars)
+  ' `.\'-,:;~"^+*o%@',   // 3 sky (procedural stars), sorted by ink coverage so gradients don't band
   ' .:-01lI10O0$#@&',   // 4 energy / glow
   ' .:+=*o#%&@@QMW8',   // 5 astronaut suit
   ' .,:;ox%#@&$8BWM',   // 6 planets / ring
@@ -67,14 +67,16 @@ void main(){
   c = mix(c, vec3(1.0), flash);
   float set = floor(texture2D(tId, base+cs*.5).r*8.0);
   float lum = dot(c, vec3(.299,.587,.114));
-  float l = set == 3.0 ? lum : clamp((lum - .06)*1.3, 0.0, 1.0);
+  float l = set == 3.0 ? pow(lum, .8) : clamp((lum - .06)*1.3, 0.0, 1.0);
   if (set == 1.0 || set == 7.0) l *= .72 + .56*h21(sci*1.93+7.7);
-  if (set == 3.0 && l < 0.14) {
+  if (set == 3.0) {
+    // dither the sky so smooth gradients don't quantise into hard-edged blocks/bands
+    l = clamp(l + (h21(sci*.917+1.3) - .5)*(1.0/12.0), 0.0, 1.0);
     float s = h21(sci*1.37);
-    if (s > 0.972) {
+    if (s > 0.968 && l < 0.42) {
       float tw = .55+.45*sin(time*2.5 + s*300.0);
-      float b = (.35 + .5*fract(s*91.0))*tw;
-      l = max(l, b); c = max(c, vec3(.78,.84,1.0)*b);
+      float b = (.38 + .55*fract(s*91.0))*tw*(1.0 - l*1.6);
+      l = max(l, l + b); c = max(c, vec3(.78,.84,1.0)*(l+b));
     }
   }
   float gi = floor(clamp(l,0.0,.999)*16.0);
@@ -102,7 +104,7 @@ export class AsciiEngine {
     this.rtColor = new THREE.WebGLRenderTarget(sw, sh, { type: THREE.HalfFloatType });
     this.rtId = new THREE.WebGLRenderTarget(Math.round(sw * idScale), Math.round(sh * idScale), { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
     this.idMats = [...Array(8)].map((_, i) => new THREE.MeshBasicMaterial({
-      color: new THREE.Color().setRGB((i + 0.5) / 8, 0, 0, THREE.LinearSRGBColorSpace) }));
+      color: new THREE.Color().setRGB((i + 0.5) / 8, 0, 0, THREE.LinearSRGBColorSpace), fog: false }));  // fog must not shift the set id
     this.postMat = new THREE.ShaderMaterial({
       uniforms: {
         tColor: { value: this.rtColor.texture }, tId: { value: this.rtId.texture }, tAtlas: { value: buildAtlas() },
