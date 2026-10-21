@@ -7,12 +7,12 @@ import { SET, tag, hash2 } from './ascii.js';
 // Grass field: instanced blades that sway in wind gusts, part around pushers
 // (hero legs, creatures) and get flattened by an expanding shockwave ring.
 // ---------------------------------------------------------------------------
-export function makeGrass({ area = [-25, 25, -45, 8], density = 14, heightFn, colA = 0x1fa38c, colB = 0x6a3cc0, tall = 1.0, mask = null, tipFrac = 0 }) {
+export function makeGrass({ area = [-25, 25, -45, 8], density = 14, heightFn, colA = 0x1fa38c, colB = 0x6a3cc0, tall = 1.0, mask = null, tipFrac = 0, width = 1 }) {
   const [x0, x1, z0, z1] = area;
   const n = Math.floor((x1 - x0) * (z1 - z0) * density);
   // blade: tapered triangle strip, 2 segments, y in [0,1]
   const g = new THREE.BufferGeometry();
-  const w = 0.07;
+  const w = 0.07 * width;
   g.setAttribute('position', new THREE.Float32BufferAttribute([
     -w, 0, 0, w, 0, 0, -w * 0.6, 0.5, 0, w * 0.6, 0.5, 0, 0, 1, 0], 3));
   g.setIndex([0, 1, 2, 1, 3, 2, 2, 3, 4]);

@@ -10,7 +10,7 @@ import { SET, tag, hash2 } from './ascii.js';
 // ---------------------------------------------------------------------------
 // cloak: dissolve in blocky world-space cells (reads as glyphs "filling in"), fresnel ghost
 // ---------------------------------------------------------------------------
-export function cloakable(mat, U) {
+export function cloakable(mat, U, edge = [2.2, 0.25, 0.3]) {
   mat.transparent = true;
   mat.onBeforeCompile = sh => {
     Object.assign(sh.uniforms, U);
@@ -26,7 +26,7 @@ export function cloakable(mat, U) {
         vec3 cnN = normalize(cross(dFdx(vCW), dFdy(vCW)));
         float fr = pow(1.0 - abs(dot(cnN, normalize(cameraPosition - vCW))), 2.0);
         vec3 ghost = vec3(0.35, 0.5, 1.5) * fr * uGhost * (0.65 + 0.35 * sin(uTime * 9.0 + vCW.y * 7.0));
-        gl_FragColor.rgb = mix(ghost, gl_FragColor.rgb + edge * vec3(2.2, 0.25, 0.3), on);
+        gl_FragColor.rgb = mix(ghost, gl_FragColor.rgb + edge * vec3(${edge.map(v => v.toFixed(2)).join(', ')}), on);
         gl_FragColor.a = mix(min(1.0, fr * uGhost * 1.2), 1.0, on);`);
   };
   return mat;

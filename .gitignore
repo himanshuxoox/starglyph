@@ -3,3 +3,4 @@ node_modules/
 *.wav
 client_secret*.json
 audio_meta.json
+*.tmp

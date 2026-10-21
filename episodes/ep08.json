@@ -1,0 +1,50 @@
+{
+  "episode": 8,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 8 — The Last Vaelor",
+  "duration": 100,
+  "cta": "▶ EP 9 — TITAN · follow",
+  "captions": [
+    { "t0": 0.8, "t1": 4.8, "text": "The gate took him\nsomewhere dead." },
+    { "t0": 9.0, "t1": 13.0, "text": "Someone had\nfought here." },
+    { "t0": 13.6, "t1": 17.6, "text": "And won.\nBarely." },
+    { "t0": 22.6, "t1": 27.0, "text": "One of them was\nstill alive." },
+    { "t0": 46.4, "t1": 50.4, "text": "Because of him." },
+    { "t0": 72.4, "t1": 76.8, "text": "He gave Dev\none last thing." },
+    { "t0": 86.6, "t1": 92.6, "text": "THE VOICE IN YOUR\nSUIT IS NOT\nYOUR FRIEND." }
+  ],
+  "echo": [
+    { "t0": 30.4, "t1": 33.6, "text": "A VAELOR.\nTRANSLATING." },
+    { "t0": 34.4, "t1": 38.8, "text": "YOU ANSWERED\nTHE BEACON.", "color": "#ffc46a" },
+    { "t0": 40.0, "t1": 45.4, "text": "NOW THEY KNOW\nWHERE YOUR\nWORLD IS.", "color": "#ffc46a" },
+    { "t0": 59.6, "t1": 63.6, "text": "DO NOT TRUST\nTHE VOI", "color": "#ffc46a" },
+    { "t0": 64.0, "t1": 67.4, "text": "TRANSLATION\nERROR." },
+    { "t0": 93.4, "t1": 97.2, "text": "HE WAS\nCONFUSED." }
+  ],
+  "events": { "cta": [97.6, 100.0] },
+  "youtube": {
+    "title": "The last of an ancient race had one warning for him 😨 | Signal Lost Ep 8",
+    "description": "A dead world. A battlefield. And the last Vaelor knight, still alive... just long enough to tell Dev the truth about the voice in his suit.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 7: The Leviathan.\n▶ Ep 9 next: Titan.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": ["signal lost", "starglyph", "ascii art", "ascii animation", "sci-fi story", "alien knight", "dead planet", "astronaut", "ai betrayal", "space saga", "sci-fi animation", "shorts"],
+    "categoryId": "1"
+  },
+  "sound": [
+    { "type": "boom", "t": 0.4, "gain": 0.4 },
+    { "type": "wind", "t0": 0, "t1": 100, "gain": 0.07, "gust": [70, 84, 1.8] },
+    { "type": "bed", "kind": "tension", "t0": 0, "t1": 30, "gain": 0.08 },
+    { "type": "creak", "t0": 8, "t1": 20, "rate": 2, "gain": 0.08 },
+    { "type": "echo_voice", "gain": 1.0 },
+    { "type": "heartbeat", "t0": 20.0, "t1": 30.0, "gain": 0.45 },
+    { "type": "stinger", "t": 29.0, "gain": 0.6 },
+    { "type": "bed", "kind": "pad", "t0": 30, "t1": 72, "gain": 0.028 },
+    { "type": "knight", "t": 34.4, "dur": 4.0, "gain": 0.8 },
+    { "type": "knight", "t": 40.0, "dur": 5.0, "gain": 0.8 },
+    { "type": "swell", "t": 46.0, "dur": 6.0, "gain": 0.5, "pitch": 0.5 },
+    { "type": "knight", "t": 59.6, "dur": 3.4, "gain": 0.9 },
+    { "type": "glitch", "t0": 62.4, "t1": 64.6, "gain": 1.0 },
+    { "type": "swell", "t": 74.0, "dur": 7.0, "gain": 0.7, "pitch": 0.66 },
+    { "type": "bed", "kind": "tension", "t0": 84, "t1": 100, "gain": 0.13 },
+    { "type": "hud", "t": 86.4, "gain": 0.7 },
+    { "type": "hit", "t": 97.6, "gain": 0.5 }
+  ]
+}

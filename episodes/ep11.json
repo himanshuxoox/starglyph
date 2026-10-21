@@ -1,0 +1,49 @@
+{
+  "episode": 11,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 11 — Without ECHO",
+  "duration": 100,
+  "cta": "▶ EP 12 — THE HIVE · follow",
+  "captions": [
+    { "t0": 1.0, "t1": 5.4, "text": "No HUD.\nNo map.\nNo voice." },
+    { "t0": 9.6, "t1": 13.6, "text": "Only Pixel\nknew the way." },
+    { "t0": 24.0, "t1": 28.4, "text": "The third key...\nfrozen in a waterfall." },
+    { "t0": 37.0, "t1": 40.6, "text": "So he made\nhis own door." },
+    { "t0": 55.0, "t1": 58.6, "text": "Three keys." },
+    { "t0": 63.4, "t1": 67.0, "text": "Then Pixel\nstarted screaming." },
+    { "t0": 76.0, "t1": 79.4, "text": "He fell." },
+    { "t0": 90.4, "t1": 95.0, "text": "They took Pixel." }
+  ],
+  "echo": [],
+  "events": { "cta": [97.6, 100.0] },
+  "youtube": {
+    "title": "His AI went silent… then they took his only friend 🥶 | Signal Lost Ep 11",
+    "description": "An ice world. No ECHO, no HUD, no map. Just Pixel. The third key is frozen inside a waterfall... and the Hollow are already here.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 10: Anaya.\n▶ Ep 12 next: The Hive.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": ["signal lost", "starglyph", "ascii art", "ascii animation", "sci-fi story", "ice planet", "frozen waterfall", "cute alien", "astronaut", "space saga", "sci-fi animation", "shorts"],
+    "categoryId": "1"
+  },
+  "sound": [
+    { "type": "boom", "t": 0.5, "gain": 0.4 },
+    { "type": "wind", "t0": 0, "t1": 100, "gain": 0.11, "gust": [60, 100, 1.6] },
+    { "type": "bed", "kind": "pad", "t0": 0, "t1": 60, "gain": 0.022 },
+    { "type": "breath", "t0": 3, "t1": 36, "rate": 1.1, "gain": 0.5 },
+    { "type": "chitter", "t": 10.2, "dur": 1.6, "gain": 0.16 },
+    { "type": "coo", "t": 15.0, "gain": 0.7 },
+    { "type": "swell", "t": 22.4, "dur": 6.0, "gain": 0.7, "pitch": 0.6 },
+    { "type": "glass_crack", "t": 42.0, "gain": 0.8 },
+    { "type": "glass_crack", "t": 44.6, "gain": 0.9 },
+    { "type": "rumble", "t0": 45.4, "t1": 50.0, "gain": 0.25 },
+    { "type": "boom", "t": 46.2, "gain": 0.7 },
+    { "type": "swell", "t": 52.0, "dur": 5.6, "gain": 0.7, "pitch": 0.75 },
+    { "type": "chitter", "t": 62.8, "dur": 3.0, "gain": 0.4 },
+    { "type": "bed", "kind": "tension", "t0": 62, "t1": 100, "gain": 0.13 },
+    { "type": "creak", "t0": 64, "t1": 96, "rate": 14, "gain": 0.1 },
+    { "type": "pulse", "t0": 66.4, "t1": 88.0, "bpm": 150, "gain": 0.45, "a": 0.4, "r": 0.4 },
+    { "type": "rustle", "t0": 75.6, "t1": 79.6, "gain": 0.4 },
+    { "type": "boom", "t": 79.6, "gain": 0.4 },
+    { "type": "chitter", "t": 87.6, "dur": 2.6, "gain": 0.5 },
+    { "type": "screech", "t": 88.4, "dur": 1.8, "gain": 0.8 },
+    { "type": "heartbeat", "t0": 89, "t1": 100, "gain": 0.6 },
+    { "type": "hit", "t": 97.6, "gain": 0.5 }
+  ]
+}

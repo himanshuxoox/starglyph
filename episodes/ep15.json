@@ -1,0 +1,281 @@
+{
+  "episode": 15,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 15 — The Choice",
+  "duration": 100,
+  "cta": "▶ EP 16 — KEYS · follow",
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 3.6,
+      "text": "ECHO was awake."
+    },
+    {
+      "t0": 3.8,
+      "t1": 7.4,
+      "text": "And so was the hive."
+    },
+    {
+      "t0": 11.0,
+      "t1": 13.8,
+      "text": "\"RUN!\""
+    },
+    {
+      "t0": 14.4,
+      "t1": 17.8,
+      "text": "\"She still flies.\""
+    },
+    {
+      "t0": 18.2,
+      "t1": 22.4,
+      "text": "\"Thirty years of fixing\nher in the dark.\""
+    },
+    {
+      "t0": 30.6,
+      "t1": 34.6,
+      "text": "Thirty years.\nAnd she was out."
+    },
+    {
+      "t0": 36.0,
+      "t1": 39.6,
+      "text": "They weren't alone."
+    },
+    {
+      "t0": 44.0,
+      "t1": 47.6,
+      "text": "He didn't trust it."
+    },
+    {
+      "t0": 48.0,
+      "t1": 51.4,
+      "text": "He had no choice."
+    },
+    {
+      "t0": 57.0,
+      "t1": 61.0,
+      "text": "Two left."
+    },
+    {
+      "t0": 66.4,
+      "t1": 70.0,
+      "text": "\"They're not\ntracking ECHO.\""
+    },
+    {
+      "t0": 70.4,
+      "t1": 74.0,
+      "text": "\"They're tracking me.\""
+    },
+    {
+      "t0": 76.0,
+      "t1": 79.6,
+      "text": "\"Go home, Dev.\""
+    },
+    {
+      "t0": 80.0,
+      "t1": 84.0,
+      "text": "\"Tell them I tried.\""
+    },
+    {
+      "t0": 86.4,
+      "t1": 91.0,
+      "text": "Every red eye\nturned to follow her."
+    }
+  ],
+  "echo": [
+    {
+      "t0": 7.8,
+      "t1": 10.6,
+      "text": "THEY CAN HEAR ME."
+    },
+    {
+      "t0": 26.6,
+      "t1": 29.8,
+      "text": "HOLD ON."
+    },
+    {
+      "t0": 40.4,
+      "t1": 43.6,
+      "text": "LET ME FLY."
+    },
+    {
+      "t0": 92.2,
+      "t1": 96.0,
+      "text": "SHE IS STILL\nALIVE."
+    }
+  ],
+  "events": {
+    "cta": [
+      97.0,
+      100.0
+    ]
+  },
+  "youtube": {
+    "title": "She stayed behind so he could escape… 💔 | Signal Lost Ep 15",
+    "description": "The hive wakes. Mira's 30-year-old capsule flies one more time, through an asteroid field with the Hollow on their tail... and then Mira makes her choice.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 14: ECHO's Secret.\n▶ Ep 16 next: Keys.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "space chase",
+      "asteroid field",
+      "sacrifice",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "hive",
+      "t0": 0,
+      "t1": 26,
+      "gain": 0.3
+    },
+    {
+      "type": "alarm",
+      "t0": 0.2,
+      "t1": 24,
+      "gain": 0.35
+    },
+    {
+      "type": "pulse",
+      "t0": 0,
+      "t1": 26,
+      "bpm": 150,
+      "gain": 0.45,
+      "a": 0.3,
+      "r": 0.5
+    },
+    {
+      "type": "creak",
+      "t0": 0,
+      "t1": 26,
+      "rate": 20,
+      "gain": 0.1
+    },
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "screech",
+      "t": 11.0,
+      "dur": 1.6,
+      "gain": 0.6
+    },
+    {
+      "type": "thruster",
+      "t0": 24.2,
+      "t1": 40,
+      "gain": 0.5
+    },
+    {
+      "type": "rumble",
+      "t0": 24.2,
+      "t1": 31,
+      "gain": 0.35
+    },
+    {
+      "type": "boom",
+      "t": 30.4,
+      "gain": 0.6
+    },
+    {
+      "type": "screech",
+      "t": 36.0,
+      "dur": 2.2,
+      "gain": 0.4
+    },
+    {
+      "type": "pulse",
+      "t0": 40,
+      "t1": 66,
+      "bpm": 160,
+      "gain": 0.5,
+      "notes": [
+        49.0,
+        49.0,
+        58.27,
+        43.65
+      ],
+      "a": 0.5,
+      "r": 0.6
+    },
+    {
+      "type": "thruster",
+      "t0": 40,
+      "t1": 66,
+      "gain": 0.3
+    },
+    {
+      "type": "boom",
+      "t": 52.6,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 55.4,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 61.6,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 64.2,
+      "gain": 0.45
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 66,
+      "t1": 100,
+      "gain": 0.12
+    },
+    {
+      "type": "hiss",
+      "t0": 75.0,
+      "t1": 77.0,
+      "gain": 0.5
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 76,
+      "t1": 92,
+      "gain": 0.03
+    },
+    {
+      "type": "thruster",
+      "t0": 84.4,
+      "t1": 90,
+      "gain": 0.25
+    },
+    {
+      "type": "screech",
+      "t": 87.0,
+      "dur": 2.0,
+      "gain": 0.5
+    },
+    {
+      "type": "boom",
+      "t": 91.0,
+      "gain": 0.6
+    },
+    {
+      "type": "silence",
+      "t0": 91.4,
+      "t1": 96.4
+    },
+    {
+      "type": "hit",
+      "t": 97.0,
+      "gain": 0.5
+    }
+  ]
+}

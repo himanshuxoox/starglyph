@@ -1,6 +1,10 @@
 name: Render episode
 
 on:
+  workflow_call:              # used by auto-episode.yml
+    inputs:
+      episode: { type: string, required: true }
+      upload: { type: boolean, default: true }
   workflow_dispatch:
     inputs:
       episode:
@@ -64,6 +68,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           PUBLISH_SLOTS: ${{ vars.PUBLISH_SLOTS || '19:00' }}
+          PUBLISH_GAP_DAYS: ${{ vars.PUBLISH_GAP_DAYS || '2' }}
         run: python upload.py --episode "${{ inputs.episode }}" --file "ep${{ inputs.episode }}.mp4"
 
       - name: Save upload state

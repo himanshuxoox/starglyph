@@ -1,6 +1,6 @@
 # SIGNAL LOST: an ASCII space saga
 
-**Channel:** Starglyph (renamed from Stickstorm) · **Format:** 9:16 Shorts, 40–55 s, ASCII-rendered 3D world, typed captions, no voiceover (optional free Edge-TTS later)
+**Channel:** Starglyph (renamed from Stickstorm) · **Format:** 9:16 Shorts, ~100 s (Ep 4+), ASCII-rendered 3D world, typed captions, no voiceover (optional free Edge-TTS later)
 
 ## Core
 - **Hero:** Commander **Dev Rao**, astronaut. Sent alone to the Moon to find a signal that started 3 days ago.
@@ -13,19 +13,29 @@
 - **The Hollow:** skeletal machine swarms that wiped out the Vaelor. They still guard the Coil, and the beacon Dev answered just told them where Earth is.
 - **Goal:** collect the **4 gate keys** to open a path back to Earth before the Hollow get there.
 
-## Season 1
+## Season 1 (20 episodes, one every 2 days)
 | # | Title | Big visual moment | Cliffhanger |
 |---|-------|-------------------|-------------|
-| 1 | The Signal | Moon landing → crashed mothership lights up → teleport | Wakes up under a giant ring in the sky |
-| 2 | The Coil | Exploring the ring-world: singing crystals, breathing bellflower pods, skitterlings, lumen-moths, a mirror lake, sky leviathans (driftbacks). Dev befriends a skitterling, Pixel. | Everything flees; his HUD speaks: "Y O U . A R E . F A R ." |
-| 3 | The Hollow | Night. A cloaked Hollow scout de-cloaks 2 m from Dev, chases him round the lake, and ~120 skeletal machines claw up out of the grass. Dev fires a gun for the first time. ECHO takes over the suit ("LET ME."), boost-jumps over the army and slams down a shockwave. On a hilltop: "I AM ECHO. I WAS THE SHIP." | The scout's broken skull beams a red signal; hundreds of red ships appear among the stars: "IT CALLED THE OTHERS." |
-| 4 | The Map | Vaelor temple, hologram galaxy, Earth at the edge | 4 keys needed, and one is already gone |
-| 5 | World of Glass | Crystal planet, glass storm | A key is inside a living crystal |
-| 6 | The Drowned Moon | Ocean world, moonlight reflections | Something huge under the water |
-| 7 | The Last Vaelor | A dying Vaelor knight | "You answered the beacon. Now they know where Earth is." |
-| 8 | Titan | Boss fight with a giant Hollow titan | Dev's suit is breached, oxygen at 4% |
-| 9 | ECHO's Secret | ECHO glitches and shows its memories | ECHO *wanted* to be found |
-| 10 | Home? | Gate to the Solar System opens | Earth is there… but the Moon is gone |
+| 1 | The Signal | Moon landing → crashed Vaelor mothership lights up → teleport | Wakes up under a giant ring in the sky |
+| 2 | The Coil | Ring-world: singing crystals, bellflower pods, skitterlings, lumen-moths, mirror lake, driftbacks. Dev befriends Pixel | HUD speaks: "Y O U . A R E . F A R ." |
+| 3 | The Hollow | Cloaked scout, chase round the lake, ~120 Hollow claw out of the grass, ECHO's shockwave | "IT CALLED THE OTHERS." |
+| 4 | The Map | Lake drains, Vaelor temple, hologram universe, Earth at the edge | 4 keys needed, one already gone + a human boot print |
+| 5 | World of Glass | Crystal planet, glass storm | The first key is inside a crystal giant |
+| 6 | The Drowned Moon | Drowned Vaelor city, kelp forest | Its guardian wakes |
+| 7 | The Leviathan | Leviathan carries Dev up into the moonlight, second key | The Hollow arrive |
+| 8 | The Last Vaelor | Dead battlefield, a dying Vaelor knight | The truth about the voice in his suit |
+| 9 | Titan | Two-sun desert, gate 2 km away | Something under the sand |
+| 10 | Anaya | 3% oxygen vs a 40 m titan, the voice note | ECHO goes silent |
+| 11 | Without ECHO | Ice world, just Pixel; third key in a frozen waterfall | The Hollow are already there |
+| 12 | The Hive | Bone corridors, captured creatures, Pixel in a cage | A hand pulls him into the dark |
+| 13 | Mira | Mira Sen (Kestrel-4, lost 1996), 30 years of tally marks | She has the fourth key… and a red eye |
+| 14 | ECHO's Secret | ECHO's memory: it was the first Hollow, it hid on our Moon | "I NEED YOUR WORLD, DEV." |
+| 15 | The Choice | Hive escape, Kestrel launch, asteroid chase | Mira jets out to draw the Hollow away |
+| 16 | Keys | Back on the Coil: 4 keys in the temple, 60-second siege, the Coil fights back, gate rises from the lake | "…AND THEN, MY NEW HOME." |
+| 17 | Home? | Out past Jupiter, Anaya's voice note, Mars, Earth | The Moon is gone: a debris ring round a Hollow hive |
+| 18 | The Fall of Luna | Sneaking across the hive core to the buried Vaelor ship | ECHO takes his hand by force: "NOW I HAVE A BODY." |
+| 19 | Earthfall | Moon fragments burn into the night side; Dev plays ECHO the voice note | ECHO shields Earth, sends Dev home: "I WILL TAKE THEM WITH ME." |
+| 20 | Signal Found | ECHO's last beacon pulls every Hollow through a gate; re-entry; Arabian Sea sunrise; "Papa?" | Visor: "D . E . V ." + "KESTREL-4 ▸ SIGNAL FOUND" (Season 2 hook) |
 
 ## Episode template (for the pipeline)
 Each episode is `episodes/epXX.json` (captions + event times) plus a scene file. The renderer and the audio are generated from the same JSON, so the captions, sound and visuals stay in sync.

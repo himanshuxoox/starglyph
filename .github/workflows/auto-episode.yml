@@ -1,0 +1,31 @@
+name: Auto episode (every 2 days)
+
+# Runs every morning. If the next episode's code is in the repo and nothing is already
+# scheduled far ahead, it renders that episode and uploads it as a scheduled Short
+# (PUBLISH_GAP_DAYS after the previous one, at PUBLISH_SLOTS IST). Otherwise it exits in seconds.
+on:
+  schedule:
+    - cron: "30 3 * * *"        # 09:00 IST daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pick:
+    runs-on: ubuntu-24.04
+    outputs:
+      episode: ${{ steps.next.outputs.episode }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: next
+        run: python3 scripts/next_episode.py
+
+  render:
+    needs: pick
+    if: needs.pick.outputs.episode != ''
+    uses: ./.github/workflows/render-episode.yml
+    with:
+      episode: ${{ needs.pick.outputs.episode }}
+      upload: true
+    secrets: inherit

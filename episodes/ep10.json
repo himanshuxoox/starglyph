@@ -1,0 +1,54 @@
+{
+  "episode": 10,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 10 — Anaya",
+  "duration": 100,
+  "cta": "▶ EP 11 — WITHOUT ECHO · follow",
+  "captions": [
+    { "t0": 0.6, "t1": 4.4, "text": "O2: 3%." },
+    { "t0": 4.8, "t1": 9.0, "text": "He had one\nthing left." },
+    { "t0": 13.4, "t1": 17.8, "text": "\"Papa...\ncome home.\"" },
+    { "t0": 18.4, "t1": 21.8, "text": "Six seconds.\nHe knew them by heart." },
+    { "t0": 23.0, "t1": 26.0, "text": "\"Do it.\"" },
+    { "t0": 42.0, "t1": 45.4, "text": "His suit\nwasn't his anymore." },
+    { "t0": 61.6, "t1": 65.6, "text": "O2: 100%." },
+    { "t0": 80.2, "t1": 83.2, "text": "\"ECHO?\"" },
+    { "t0": 88.0, "t1": 93.4, "text": "For the first time,\nhe was truly alone." }
+  ],
+  "echo": [
+    { "t0": 9.4, "t1": 12.8, "text": "LET ME IN.\nI CAN SAVE YOU." },
+    { "t0": 26.4, "t1": 29.0, "text": "THANK YOU." },
+    { "t0": 66.4, "t1": 70.4, "text": "I GAVE YOU\nMY CORE." },
+    { "t0": 72.0, "t1": 76.6, "text": "I WILL...\nSLEEP NOW." }
+  ],
+  "events": { "cta": [97.6, 100.0] },
+  "youtube": {
+    "title": "6 seconds of his daughter's voice… and his AI made a choice 💔 | Signal Lost Ep 10",
+    "description": "3% oxygen. A 40-metre titan. A voice note from home. And ECHO finally shows what it can do... at a price.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 9: Titan.\n▶ Ep 11 next: Without ECHO.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": ["signal lost", "starglyph", "ascii art", "ascii animation", "sci-fi story", "emotional", "father daughter", "boss fight", "astronaut", "space saga", "sci-fi animation", "shorts"],
+    "categoryId": "1"
+  },
+  "sound": [
+    { "type": "alarm", "t0": 0, "t1": 10.4, "gain": 0.45 },
+    { "type": "hiss", "t0": 0, "t1": 31, "gain": 0.45 },
+    { "type": "heartbeat", "t0": 0, "t1": 23, "gain": 0.7 },
+    { "type": "echo_voice", "gain": 1.0 },
+    { "type": "voicenote", "t": 12.6, "gain": 1.0 },
+    { "type": "bed", "kind": "pad", "t0": 11.0, "t1": 23.0, "gain": 0.04 },
+    { "type": "swell", "t": 26.2, "dur": 5.0, "gain": 0.9, "pitch": 0.75 },
+    { "type": "pulse", "t0": 31.0, "t1": 60.0, "bpm": 140, "gain": 0.5, "notes": [55.0, 65.41, 73.42, 82.41], "a": 0.5, "r": 0.4 },
+    { "type": "screech", "t": 36.0, "dur": 2.0, "gain": 0.8 },
+    { "type": "boom", "t": 38.6, "gain": 0.8 },
+    { "type": "thruster", "t0": 48.4, "t1": 52.0, "gain": 0.5 },
+    { "type": "boom", "t": 52.0, "gain": 1.0 },
+    { "type": "screech", "t": 52.3, "dur": 2.6, "gain": 0.9 },
+    { "type": "rumble", "t0": 53.0, "t1": 62.0, "gain": 0.25 },
+    { "type": "boom", "t": 58.4, "gain": 0.7 },
+    { "type": "hud", "t": 61.4, "gain": 0.7 },
+    { "type": "bed", "kind": "pad", "t0": 62.0, "t1": 100, "gain": 0.03 },
+    { "type": "glitch", "t0": 74.0, "t1": 77.0, "gain": 0.5 },
+    { "type": "wind", "t0": 60, "t1": 100, "gain": 0.06 },
+    { "type": "coo", "t": 90.0, "gain": 0.8 },
+    { "type": "hit", "t": 97.6, "gain": 0.4 }
+  ]
+}

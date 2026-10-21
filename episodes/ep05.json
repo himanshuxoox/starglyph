@@ -1,0 +1,56 @@
+{
+  "episode": 5,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 5 — World of Glass",
+  "duration": 100,
+  "cta": "▶ EP 6 — THE DROWNED MOON · follow",
+  "captions": [
+    { "t0": 0.4, "t1": 4.2, "text": "The first key\nwas on a world\nmade of glass." },
+    { "t0": 10.2, "t1": 14.2, "text": "Every step\ncracked the ground." },
+    { "t0": 15.0, "t1": 19.6, "text": "And the wind...\nsang." },
+    { "t0": 22.4, "t1": 26.6, "text": "He followed\nthe key's signal." },
+    { "t0": 41.6, "t1": 46.6, "text": "The storm cut\nlike a million\nknives." },
+    { "t0": 55.4, "t1": 59.4, "text": "It wasn't\na rock." },
+    { "t0": 64.0, "t1": 68.6, "text": "Only Pixel was\nsmall enough." },
+    { "t0": 82.4, "t1": 85.8, "text": "Key one." },
+    { "t0": 86.4, "t1": 90.6, "text": "Then the\nrock stood up." }
+  ],
+  "echo": [
+    { "t0": 3.6, "t1": 7.0, "text": "THE FIRST KEY.\nGO." },
+    { "t0": 28.4, "t1": 31.8, "text": "STORM.\nFIND COVER." },
+    { "t0": 59.8, "t1": 63.2, "text": "THE KEY IS\nINSIDE IT." },
+    { "t0": 92.6, "t1": 95.8, "text": "IT WANTS\nIT BACK." }
+  ],
+  "events": { "cta": [97.6, 100.0] },
+  "youtube": {
+    "title": "The rock he hid behind… was alive 💎 | Signal Lost Ep 5",
+    "description": "A world made of glass. A storm of shards. The first gate key... sleeping inside a crystal giant.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 4: The Map.\n▶ Ep 6 next: The Drowned Moon.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": ["signal lost", "starglyph", "ascii art", "ascii animation", "sci-fi story", "crystal planet", "crystal giant", "astronaut", "glass storm", "space saga", "sci-fi animation", "shorts"],
+    "categoryId": "1"
+  },
+  "sound": [
+    { "type": "bed", "kind": "pad", "t0": 0, "t1": 9.5, "gain": 0.03 },
+    { "type": "echo_voice", "gain": 1.0 },
+    { "type": "swell", "t": 3.0, "dur": 5.6, "gain": 0.7, "pitch": 0.75 },
+    { "type": "boom", "t": 8.8, "gain": 0.45 },
+    { "type": "wind", "t0": 9.0, "t1": 100, "gain": 0.05, "gust": [33, 52, 3.2] },
+    { "type": "glasswind", "t0": 9.0, "t1": 33, "gain": 0.6 },
+    { "type": "bed", "kind": "pad", "t0": 9.5, "t1": 30, "gain": 0.03 },
+    { "type": "hud", "t": 28.2, "gain": 0.7 },
+    { "type": "bed", "kind": "tension", "t0": 28, "t1": 54, "gain": 0.1 },
+    { "type": "shards", "t0": 34.5, "t1": 53.0, "gain": 0.9 },
+    { "type": "breath", "t0": 38.0, "t1": 50.0, "rate": 0.6, "gain": 0.8 },
+    { "type": "bed", "kind": "pad", "t0": 53, "t1": 76, "gain": 0.03 },
+    { "type": "swell", "t": 54.0, "dur": 6.0, "gain": 0.6, "pitch": 0.5 },
+    { "type": "chitter", "t": 62.6, "dur": 2.0, "gain": 0.18 },
+    { "type": "scurry", "t": 63.2, "dur": 7.6, "gain": 0.4 },
+    { "type": "rumble", "t0": 74.5, "t1": 97, "gain": 0.16 },
+    { "type": "stinger", "t": 77.0, "gain": 0.8 },
+    { "type": "coo", "t": 81.6, "gain": 0.9 },
+    { "type": "hud", "t": 81.8, "gain": 0.8 },
+    { "type": "pulse", "t0": 86.0, "t1": 97.4, "bpm": 150, "gain": 0.45, "a": 0.5, "r": 0.3 },
+    { "type": "screech", "t": 90.0, "dur": 2.4, "gain": 0.6, "pan": 0.0 },
+    { "type": "boom", "t": 97.2, "gain": 0.8 },
+    { "type": "hit", "t": 97.6, "gain": 0.5 }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "episode": 17,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 17 — Home?",
+  "duration": 100,
+  "cta": "▶ EP 18 — THE FALL OF LUNA · follow",
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 3.4,
+      "text": "Silence."
+    },
+    {
+      "t0": 3.6,
+      "t1": 6.6,
+      "text": "Then... Jupiter."
+    },
+    {
+      "t0": 7.0,
+      "t1": 10.2,
+      "text": "\"I'm... home?\""
+    },
+    {
+      "t0": 16.4,
+      "t1": 19.2,
+      "text": "Her capsule.\nStill flying."
+    },
+    {
+      "t0": 21.4,
+      "t1": 25.0,
+      "text": "\"Papa...\ncome home.\""
+    },
+    {
+      "t0": 25.4,
+      "t1": 28.8,
+      "text": "He'd played it\na thousand times."
+    },
+    {
+      "t0": 29.2,
+      "t1": 32.6,
+      "text": "This time,\nhe was close."
+    },
+    {
+      "t0": 37.0,
+      "t1": 40.2,
+      "text": "Mars."
+    },
+    {
+      "t0": 41.0,
+      "t1": 44.6,
+      "text": "Then the belt."
+    },
+    {
+      "t0": 47.4,
+      "t1": 50.4,
+      "text": "Earth."
+    },
+    {
+      "t0": 50.8,
+      "t1": 54.2,
+      "text": "Blue. Alive."
+    },
+    {
+      "t0": 55.0,
+      "t1": 58.8,
+      "text": "\"Hold on, beta.\nPapa's coming.\""
+    },
+    {
+      "t0": 63.4,
+      "t1": 66.6,
+      "text": "\"Where's the Moon?\""
+    },
+    {
+      "t0": 68.0,
+      "t1": 71.8,
+      "text": "The Moon\nwas gone."
+    }
+  ],
+  "echo": [
+    {
+      "t0": 12.0,
+      "t1": 15.0,
+      "text": "I BROUGHT HER."
+    },
+    {
+      "t0": 33.0,
+      "t1": 35.6,
+      "text": "HOLD ON."
+    },
+    {
+      "t0": 73.2,
+      "t1": 76.8,
+      "text": "THEY GOT HERE\nFIRST."
+    },
+    {
+      "t0": 88.6,
+      "t1": 93.4,
+      "text": "AND THEY FOUND\nMY SHIP.",
+      "color": "#ff5060"
+    }
+  ],
+  "events": {
+    "cta": [
+      97.0,
+      100.0
+    ]
+  },
+  "youtube": {
+    "title": "He finally made it home… but the Moon is gone 🌑 | Signal Lost Ep 17",
+    "description": "Out of the gate, past Jupiter, past Mars... Earth, blue and alive. Dev is almost home. Then he looks for the Moon.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 16: Keys.\n▶ Ep 18 next: The Fall of Luna.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "earth",
+      "moon",
+      "jupiter",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "silence",
+      "t0": 0,
+      "t1": 3.0
+    },
+    {
+      "type": "breath",
+      "t0": 0.4,
+      "t1": 10,
+      "rate": 0.9,
+      "gain": 0.5
+    },
+    {
+      "type": "swell",
+      "t": 3.8,
+      "dur": 6,
+      "pitch": 0.75,
+      "gain": 0.6
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 4,
+      "t1": 60,
+      "gain": 0.04
+    },
+    {
+      "type": "stinger",
+      "t": 10.6,
+      "gain": 0.4
+    },
+    {
+      "type": "thruster",
+      "t0": 10.6,
+      "t1": 16,
+      "gain": 0.3
+    },
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "hud",
+      "t": 19.6,
+      "gain": 0.5
+    },
+    {
+      "type": "voicenote",
+      "t": 20.6,
+      "gain": 1.0
+    },
+    {
+      "type": "thruster",
+      "t0": 35.4,
+      "t1": 46,
+      "gain": 0.55
+    },
+    {
+      "type": "rumble",
+      "t0": 35.4,
+      "t1": 38,
+      "gain": 0.3
+    },
+    {
+      "type": "swell",
+      "t": 46.6,
+      "dur": 7,
+      "gain": 0.7
+    },
+    {
+      "type": "hud",
+      "t": 61.6,
+      "gain": 0.6
+    },
+    {
+      "type": "alarm",
+      "t0": 61.8,
+      "t1": 64,
+      "gain": 0.2
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 62,
+      "t1": 100,
+      "gain": 0.13
+    },
+    {
+      "type": "stinger",
+      "t": 68.0,
+      "gain": 0.6
+    },
+    {
+      "type": "signal",
+      "t0": 78,
+      "t1": 92,
+      "every": 1.4,
+      "gain": 0.35
+    },
+    {
+      "type": "armada",
+      "t0": 76,
+      "t1": 96,
+      "gain": 0.35
+    },
+    {
+      "type": "screech",
+      "t": 84.0,
+      "dur": 2.2,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 86.0,
+      "gain": 0.5
+    },
+    {
+      "type": "glitch",
+      "t0": 88.4,
+      "t1": 89.0,
+      "gain": 0.4
+    },
+    {
+      "type": "silence",
+      "t0": 93.6,
+      "t1": 96.6
+    },
+    {
+      "type": "hit",
+      "t": 97.0,
+      "gain": 0.5
+    }
+  ]
+}

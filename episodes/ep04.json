@@ -1,0 +1,57 @@
+{
+  "episode": 4,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 4 — The Map",
+  "duration": 100,
+  "cta": "▶ EP 5 — WORLD OF GLASS · follow",
+  "captions": [
+    { "t0": 0.4, "t1": 4.0, "text": "The sky was\nfull of them." },
+    { "t0": 9.0, "t1": 13.0, "text": "Under the lake..." },
+    { "t0": 13.6, "t1": 19.2, "text": "...a door,\n4 million years old." },
+    { "t0": 22.4, "t1": 26.2, "text": "The Vaelor\nbuilt this." },
+    { "t0": 27.4, "t1": 32.2, "text": "Then they\nvanished." },
+    { "t0": 41.6, "t1": 45.6, "text": "A map." },
+    { "t0": 51.0, "t1": 54.8, "text": "And at the\nvery edge..." },
+    { "t0": 58.6, "t1": 62.0, "text": "...a tiny\nblue light." },
+    { "t0": 67.8, "t1": 72.4, "text": "Four worlds.\nFour keys." },
+    { "t0": 82.0, "t1": 85.0, "text": "A boot print." },
+    { "t0": 85.4, "t1": 88.6, "text": "Human." },
+    { "t0": 89.6, "t1": 93.6, "text": "Someone got\nhere first." }
+  ],
+  "echo": [
+    { "t0": 4.4, "t1": 7.9, "text": "THEY ARE COMING.\nFOLLOW ME." },
+    { "t0": 46.0, "t1": 49.6, "text": "THE WHOLE\nUNIVERSE." },
+    { "t0": 55.0, "t1": 58.2, "text": "HOME." },
+    { "t0": 62.8, "t1": 67.2, "text": "FOUR KEYS\nOPEN THE GATE." },
+    { "t0": 76.8, "t1": 80.6, "text": "ONE IS\nALREADY GONE.", "color": "#ff6a7a" },
+    { "t0": 94.0, "t1": 97.4, "text": "YOU ARE NOT\nTHE FIRST." }
+  ],
+  "cards": [
+    { "t0": 54.6, "t1": 58.4, "text": "EARTH", "size": 64, "color": "#9fe8ff" }
+  ],
+  "events": { "cta": [97.6, 100.0] },
+  "youtube": {
+    "title": "He found a map of the universe… and a footprint that shouldn't exist 👣 | Signal Lost Ep 4",
+    "description": "Under the lake: a Vaelor temple, a hologram of the whole universe, and the way home. Four keys open the gate. One is already gone... and someone left a boot print.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 3: The Hollow.\n▶ Ep 5 next: World of Glass.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": ["signal lost", "starglyph", "ascii art", "ascii animation", "sci-fi story", "alien temple", "galaxy map", "astronaut", "ring world", "space saga", "sci-fi animation", "shorts"],
+    "categoryId": "1"
+  },
+  "sound": [
+    { "type": "wind", "t0": 0, "t1": 20, "gain": 0.05 },
+    { "type": "armada", "t0": 0, "t1": 20, "gain": 0.08 },
+    { "type": "bed", "kind": "tension", "t0": 0, "t1": 20, "gain": 0.08 },
+    { "type": "echo_voice", "gain": 1.0 },
+    { "type": "water", "t0": 8.6, "t1": 14.5, "gain": 0.5 },
+    { "type": "rumble", "t0": 18.8, "t1": 24.0, "gain": 0.14 },
+    { "type": "bed", "kind": "pad", "t0": 21, "t1": 76, "gain": 0.03 },
+    { "type": "swell", "t": 36.6, "dur": 6.0, "gain": 0.9 },
+    { "type": "hud", "t": 41.4, "gain": 0.6 },
+    { "type": "swell", "t": 50.4, "dur": 5.0, "gain": 0.6, "pitch": 1.5 },
+    { "type": "hud", "t": 63.0, "gain": 0.6 },
+    { "type": "bed", "kind": "tension", "t0": 75.5, "t1": 100, "gain": 0.13 },
+    { "type": "glitch", "t0": 76.6, "t1": 77.4, "gain": 0.6 },
+    { "type": "heartbeat", "t0": 81.5, "t1": 93.5, "gain": 0.55 },
+    { "type": "stinger", "t": 85.4, "gain": 0.6 },
+    { "type": "hit", "t": 97.6, "gain": 0.6 }
+  ]
+}

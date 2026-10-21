@@ -197,6 +197,86 @@ def main(ep_path, out_path, meta_path=None):
                 hn += np.sin(2 * np.pi * f * t + 2 * np.sin(2 * np.pi * 0.3 * t)) + 0.4 * np.sin(2 * np.pi * f * 3.01 * t)
             hn = lp(hn, 600)
             L += hn * e; R += np.roll(hn, 900) * e
+        elif k == "water":                              # water draining in a spiral
+            e = ramp(c["t0"], c["t1"], 1.0, 1.5) * g
+            w = bp(rng.standard_normal(N), 250, 2200) * (0.5 + 0.5 * np.sin(2 * np.pi * (1.5 + 2 * np.clip((t - c["t0"]) / max(1e-3, c["t1"] - c["t0"]), 0, 1)) * t))
+            w += lp(rng.standard_normal(N), 160) * 2
+            L += w * e; R += np.roll(w, 500) * e
+        elif k == "swell":                              # wonder: a rising airy chord + sparkles
+            dur = c.get("dur", 5.0); n = int(dur * SR); tt = np.arange(n) / SR; p = c.get("pitch", 1.0)
+            env = np.clip(tt / (dur * 0.6), 0, 1) ** 1.5 * np.clip((dur - tt) / (dur * 0.35), 0, 1)
+            ch = sum(np.sin(2 * np.pi * f * p * tt + i) + 0.3 * np.sin(4 * np.pi * f * p * tt) for i, f in enumerate((220.0, 277.18, 329.63, 440.0, 554.37)))
+            add(ch * env * 0.25, c["t"], g, pan=-0.2); add(np.roll(ch, 600) * env * 0.25, c["t"], g, pan=0.3)
+            for i in range(int(dur * 6)): add(tone(rng.choice(PENTA) * p, 0.6, 6, (1, 2.01)), c["t"] + rng.uniform(0.2, dur), 0.04 * g, pan=rng.uniform(-0.7, 0.7))
+        elif k == "glasswind":                          # wind singing through glass: slow gliding sine tones
+            e = ramp(c["t0"], c["t1"], 2, 2) * g
+            sg = np.zeros(N)
+            for i, f in enumerate((587.33, 739.99, 880.0, 1174.66)):
+                sg += np.sin(2 * np.pi * f * t * (1 + 0.004 * np.sin(2 * np.pi * (0.07 + i * 0.03) * t)) + i) * (0.5 + 0.5 * np.sin(2 * np.pi * (0.05 + 0.02 * i) * t + i * 1.7)) ** 2
+            L += sg * e * 0.05; R += np.roll(sg, 1300) * e * 0.05
+        elif k == "shards":                             # glass storm: hiss + endless tiny tinkles
+            e = ramp(c["t0"], c["t1"], 1.5, 2.5) * g
+            hs = hp(rng.standard_normal(N), 2500) * (0.6 + 0.4 * np.abs(np.sin(2 * np.pi * 0.7 * t)))
+            L += hs * e * 0.25; R += np.roll(hs, 700) * e * 0.25
+            for i in range(int((c["t1"] - c["t0"]) * 40)):
+                add(tone(rng.uniform(3000, 9000), 0.05, 70, (1, 2.4)), c["t0"] + rng.uniform(0, c["t1"] - c["t0"]), 0.06 * g, pan=rng.uniform(-0.9, 0.9))
+        elif k == "sea":                                # open-ocean swell + wash
+            e = ramp(c["t0"], c["t1"], 1.5, 0.3) * g
+            sw = lp(rng.standard_normal(N), 500) * (0.4 + 0.6 * np.sin(2 * np.pi * 0.11 * t) ** 2) + bp(rng.standard_normal(N), 800, 3000) * 0.25 * np.maximum(0, np.sin(2 * np.pi * 0.11 * t - 0.6)) ** 4
+            L += sw * e; R += np.roll(sw, 1500) * e
+        elif k == "splash":
+            n = int(1.6 * SR); tt = np.arange(n) / SR
+            add(bp(noise(1.6), 300, 5000) * np.exp(-tt * 4) * 1.5 + lp(noise(1.6), 200) * np.exp(-tt * 3) * 2, c["t"], 0.6 * g)
+            for i in range(30): add(tone(rng.uniform(400, 1400), 0.06, 40), c["t"] + 0.2 + rng.uniform(0, 1.2), 0.04 * g, pan=rng.uniform(-0.6, 0.6))
+        elif k == "under_amb":                          # muffled deep-water drone + bubbles + creaks
+            e = ramp(c["t0"], c["t1"], 1.0, 1.0) * g
+            dr = lp(rng.standard_normal(N), 140) * 3 + np.sin(2 * np.pi * 41 * t) * 0.3 * (0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * t))
+            L += dr * e; R += np.roll(dr, 2000) * e
+            for i in range(int((c["t1"] - c["t0"]) * 3)):
+                tb = c["t0"] + rng.uniform(0, c["t1"] - c["t0"])
+                for j in range(rng.integers(2, 6)):
+                    f = rng.uniform(300, 900); n = int(0.05 * SR); x = np.arange(n) / SR
+                    add(np.sin(2 * np.pi * np.cumsum(f * (1 + 2 * x)) / SR) * np.exp(-x * 60), tb + j * 0.06, 0.05 * g, pan=rng.uniform(-0.5, 0.5))
+        elif k == "knight":                             # the Vaelor knight speaks: deep, breathy, tonal syllables
+            tb = c["t"]; end = c["t"] + c.get("dur", 3.0)
+            while tb < end:
+                dur = rng.uniform(0.18, 0.4); n = int(dur * SR); x = np.arange(n) / SR; f0 = rng.choice([62.0, 69.0, 73.0, 82.0])
+                glide = f0 * (1 + 0.15 * np.sin(np.pi * x / dur))
+                ph = 2 * np.pi * np.cumsum(glide) / SR
+                v = np.sin(ph) + 0.5 * np.sin(2 * ph) + 0.3 * np.sin(3 * ph) + 0.4 * bp(noise(dur), 200, 1200)
+                v = bp(v, 90, 900) * np.sin(np.pi * x / dur) ** 0.7
+                add(v, tb, 0.6 * g, pan=-0.1); add(v, tb + 0.12, 0.2 * g, pan=0.4)
+                tb += dur + rng.uniform(0.05, 0.2)
+        elif k == "glass_crack":                        # visor cracking
+            for i in range(18): add(np.pad(hp(noise(0.02), 2500) * envd(int(0.02 * SR), 0.0003, 250), (0, int(0.12 * SR))) + tone(rng.uniform(2000, 7000), 0.14, 30, (1, 2.7)), c["t"] + i * rng.uniform(0.005, 0.03), 0.25 * g, pan=rng.uniform(-0.3, 0.6))
+        elif k == "alarm":                              # suit alarm: two-tone pulses
+            tb = c["t0"]
+            while tb < c["t1"]:
+                add(tone(1046.5, 0.18, 6, (1, 3.01), amp=[1, 0.2]), tb, 0.12 * g); add(tone(784.0, 0.18, 6, (1, 3.01), amp=[1, 0.2]), tb + 0.22, 0.12 * g); tb += 1.05
+        elif k == "hiss":                               # air leaking from the suit
+            e = ramp(c["t0"], c["t1"], 0.2, 1.0) * g
+            hs = hp(rng.standard_normal(N), 4000) * (0.7 + 0.3 * np.sin(2 * np.pi * 7 * t))
+            L += hs * e * 0.12; R += hs * e * 0.08
+        elif k == "voicenote":                          # a child's 6 s voice note through a cracked helmet speaker
+            tb = c["t"] + 0.4
+            for f0, dur in ((330, 0.18), (300, 0.3), (0, 0.25), (360, 0.22), (320, 0.45)):
+                if f0:
+                    n = int(dur * SR); x = np.arange(n) / SR
+                    gl = f0 * (1 + 0.08 * np.sin(np.pi * x / dur) - 0.1 * x / dur)
+                    ph = 2 * np.pi * np.cumsum(gl) / SR
+                    v = np.sin(ph) + 0.4 * np.sin(2 * ph) + 0.25 * np.sin(3 * ph)
+                    v = bp(v, 400, 3200) * np.sin(np.pi * x / dur) ** 0.6
+                    add(v, tb, 0.35 * g)
+                tb += dur + 0.06
+            n = int(6.2 * SR); x = np.arange(n) / SR
+            add(bp(noise(6.2), 1000, 5000) * 0.05 * (np.abs(np.sin(2 * np.pi * 0.7 * x)) > 0.98), c["t"], g)
+            add(hp(noise(6.2), 3000) * 0.015, c["t"], g)
+        elif k == "hive":                               # inside the hive: organic drone, slow breathing, drips
+            e = ramp(c["t0"], c["t1"], 1.0, 1.0) * g
+            br = 0.5 + 0.5 * np.sin(2 * np.pi * 0.4 * t)
+            dr = (np.sin(2 * np.pi * 36 * t) + 0.6 * np.sin(2 * np.pi * 54.3 * t)) * (0.4 + 0.6 * br) * 0.25 + lp(rng.standard_normal(N), 220) * br * 1.5
+            L += dr * e; R += np.roll(dr, 900) * e
+            for i in range(int((c["t1"] - c["t0"]) * 1.2)): add(tone(rng.uniform(900, 1600), 0.15, 25, (1, 2.3)), c["t0"] + rng.uniform(0, c["t1"] - c["t0"]), 0.05 * g, pan=rng.uniform(-0.8, 0.8))
         elif k == "echo_voice":                         # ECHO's lines: cold, low, formant-filtered machine voice
             for line in ep.get("echo", []):
                 words = [w for w in line["text"].replace("\n", " ").split(" ") if w]
@@ -225,6 +305,12 @@ def main(ep_path, out_path, meta_path=None):
             add(tone(70, 0.08, 40), f["t"], 0.12)
         else:
             add(bp(noise(0.09), 1200, 5000) * envd(n, 0.002, 30), f["t"], 0.09, pan=rng.uniform(-0.15, 0.15))
+    for tt in meta.get("pods", []):                     # drop pod: falling whistle, then a water impact
+        n = int(2.0 * SR); x = np.arange(n) / SR
+        wh = np.sin(2 * np.pi * np.cumsum(2200 - 900 * x) / SR) * np.clip(x / 1.6, 0, 1) ** 2 * 0.25 + bp(noise(2.0), 1500, 6000) * np.clip(x / 2, 0, 1) ** 3 * 0.4
+        add(wh, tt - 2.0, 0.25, pan=rng.uniform(-0.7, 0.7))
+        n = int(1.2 * SR); x = np.arange(n) / SR
+        add(lp(noise(1.2), 600) * np.exp(-x * 4) * 2 + np.sin(2 * np.pi * 50 * x) * np.exp(-x * 5), tt, 0.35, pan=rng.uniform(-0.7, 0.7))
     for tt in meta.get("shots", []):                    # carbine: crack + plasma zap
         n = int(0.25 * SR); x = np.arange(n) / SR
         zap = np.sin(2 * np.pi * np.cumsum(2400 * np.exp(-x * 30) + 300) / SR) * np.exp(-x * 22)

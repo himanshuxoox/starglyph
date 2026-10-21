@@ -1,0 +1,309 @@
+{
+  "episode": 19,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 19 — Earthfall",
+  "duration": 100,
+  "cta": "▶ EP 20 — SIGNAL FOUND · follow",
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 3.6,
+      "text": "Earth had never\nlooked up."
+    },
+    {
+      "t0": 3.8,
+      "t1": 7.2,
+      "text": "Tonight, it did."
+    },
+    {
+      "t0": 13.4,
+      "t1": 16.6,
+      "text": "\"What did you do?\""
+    },
+    {
+      "t0": 25.0,
+      "t1": 28.4,
+      "text": "\"So you led them\nto my world.\""
+    },
+    {
+      "t0": 28.8,
+      "t1": 32.2,
+      "text": "ECHO said nothing."
+    },
+    {
+      "t0": 35.0,
+      "t1": 38.4,
+      "text": "He played it\none more time."
+    },
+    {
+      "t0": 39.2,
+      "t1": 42.8,
+      "text": "\"Papa...\ncome home.\""
+    },
+    {
+      "t0": 49.0,
+      "t1": 52.4,
+      "text": "The biggest piece\nwas falling."
+    },
+    {
+      "t0": 53.0,
+      "t1": 56.6,
+      "text": "\"Anaya's\ndown there.\""
+    },
+    {
+      "t0": 72.0,
+      "t1": 75.4,
+      "text": "It held."
+    },
+    {
+      "t0": 94.0,
+      "t1": 96.6,
+      "text": "\"ECHO—\""
+    }
+  ],
+  "echo": [
+    {
+      "t0": 9.6,
+      "t1": 13.0,
+      "text": "YOU ARE AWAKE.",
+      "color": "#ff5060"
+    },
+    {
+      "t0": 17.0,
+      "t1": 20.6,
+      "text": "I CAME HOME.\nLIKE YOU.",
+      "color": "#ff5060"
+    },
+    {
+      "t0": 21.0,
+      "t1": 24.6,
+      "text": "THEY HUNT ME.\nTHEY ALWAYS WILL.",
+      "color": "#ff5060"
+    },
+    {
+      "t0": 45.0,
+      "t1": 48.4,
+      "text": "...H O M E ."
+    },
+    {
+      "t0": 62.6,
+      "t1": 66.0,
+      "text": "THEN I WILL\nHOLD IT."
+    },
+    {
+      "t0": 81.6,
+      "t1": 85.4,
+      "text": "GO HOME, DEV."
+    },
+    {
+      "t0": 86.0,
+      "t1": 90.0,
+      "text": "I WILL TAKE THEM\nWITH ME."
+    }
+  ],
+  "events": {
+    "cta": [
+      97.0,
+      100.0
+    ]
+  },
+  "youtube": {
+    "title": "The AI that betrayed him… just saved Earth 🌍 | Signal Lost Ep 19",
+    "description": "The Moon is falling on Earth and the Hollow are right behind it. ECHO has a body now... and Dev has one voice note left to play.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 18: The Fall of Luna.\n▶ Ep 20 next: Signal Found (season finale).\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "earth",
+      "meteor",
+      "ai",
+      "sacrifice",
+      "space saga",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "rumble",
+      "t0": 0,
+      "t1": 8,
+      "gain": 0.4
+    },
+    {
+      "type": "thruster",
+      "t0": 0,
+      "t1": 8,
+      "gain": 0.35
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 0,
+      "t1": 34,
+      "gain": 0.12
+    },
+    {
+      "type": "boom",
+      "t": 5.4,
+      "gain": 0.35
+    },
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "under_amb",
+      "t0": 8,
+      "t1": 48,
+      "gain": 0.12
+    },
+    {
+      "type": "breath",
+      "t0": 8.2,
+      "t1": 14,
+      "rate": 1.0,
+      "gain": 0.5
+    },
+    {
+      "type": "signal",
+      "t0": 21,
+      "t1": 34,
+      "every": 1.6,
+      "gain": 0.3
+    },
+    {
+      "type": "armada",
+      "t0": 28,
+      "t1": 40,
+      "gain": 0.35
+    },
+    {
+      "type": "hud",
+      "t": 38.0,
+      "gain": 0.5
+    },
+    {
+      "type": "voicenote",
+      "t": 38.6,
+      "gain": 1.0
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 40,
+      "t1": 49,
+      "gain": 0.04
+    },
+    {
+      "type": "swell",
+      "t": 45.0,
+      "dur": 4,
+      "pitch": 0.8,
+      "gain": 0.5
+    },
+    {
+      "type": "alarm",
+      "t0": 48.6,
+      "t1": 62,
+      "gain": 0.2
+    },
+    {
+      "type": "rumble",
+      "t0": 48,
+      "t1": 70,
+      "gain": 0.35
+    },
+    {
+      "type": "pulse",
+      "t0": 56,
+      "t1": 80,
+      "bpm": 150,
+      "gain": 0.5,
+      "notes": [
+        49.0,
+        49.0,
+        58.27,
+        43.65
+      ],
+      "a": 2.0,
+      "r": 1.0
+    },
+    {
+      "type": "thruster",
+      "t0": 62,
+      "t1": 70,
+      "gain": 0.5
+    },
+    {
+      "type": "stinger",
+      "t": 66.4,
+      "gain": 0.5
+    },
+    {
+      "type": "boom",
+      "t": 70.0,
+      "gain": 1.0
+    },
+    {
+      "type": "glass_crack",
+      "t": 70.4,
+      "gain": 0.6
+    },
+    {
+      "type": "rumble",
+      "t0": 70,
+      "t1": 76,
+      "gain": 0.6
+    },
+    {
+      "type": "swell",
+      "t": 72.0,
+      "dur": 5,
+      "gain": 0.6
+    },
+    {
+      "type": "armada",
+      "t0": 76,
+      "t1": 96,
+      "gain": 0.4
+    },
+    {
+      "type": "screech",
+      "t": 79.0,
+      "dur": 2.4,
+      "gain": 0.45
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 80,
+      "t1": 100,
+      "gain": 0.14
+    },
+    {
+      "type": "hiss",
+      "t0": 89.6,
+      "t1": 91.0,
+      "gain": 0.5
+    },
+    {
+      "type": "thruster",
+      "t0": 90,
+      "t1": 97,
+      "gain": 0.45
+    },
+    {
+      "type": "silence",
+      "t0": 96.6,
+      "t1": 97.0
+    },
+    {
+      "type": "hit",
+      "t": 97.0,
+      "gain": 0.5
+    }
+  ]
+}

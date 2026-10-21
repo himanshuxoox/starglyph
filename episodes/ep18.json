@@ -1,0 +1,299 @@
+{
+  "episode": 18,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 18 — The Fall of Luna",
+  "duration": 100,
+  "cta": "▶ EP 19 — EARTHFALL · follow",
+  "captions": [
+    {
+      "t0": 0.4,
+      "t1": 3.4,
+      "text": "It used to be\nthe Moon."
+    },
+    {
+      "t0": 3.6,
+      "t1": 7.0,
+      "text": "Now it was\na nest."
+    },
+    {
+      "t0": 8.4,
+      "t1": 11.4,
+      "text": "And the pieces..."
+    },
+    {
+      "t0": 11.6,
+      "t1": 14.6,
+      "text": "...were falling."
+    },
+    {
+      "t0": 18.6,
+      "t1": 21.8,
+      "text": "Where it all\nstarted."
+    },
+    {
+      "t0": 28.0,
+      "t1": 31.4,
+      "text": "Fifty of them."
+    },
+    {
+      "t0": 32.0,
+      "t1": 35.6,
+      "text": "None of them\nlooked up."
+    },
+    {
+      "t0": 45.0,
+      "t1": 48.2,
+      "text": "\"And then what?\""
+    },
+    {
+      "t0": 52.2,
+      "t1": 55.8,
+      "text": "He thought\nof Mira."
+    },
+    {
+      "t0": 56.4,
+      "t1": 58.8,
+      "text": "\"No.\""
+    },
+    {
+      "t0": 66.4,
+      "t1": 69.6,
+      "text": "Every eye\nturned."
+    },
+    {
+      "t0": 80.6,
+      "t1": 84.2,
+      "text": "The Moon broke."
+    },
+    {
+      "t0": 93.2,
+      "t1": 96.4,
+      "text": "And Earth\nwas next."
+    }
+  ],
+  "echo": [
+    {
+      "t0": 15.0,
+      "t1": 18.2,
+      "text": "MY SHIP."
+    },
+    {
+      "t0": 23.8,
+      "t1": 27.6,
+      "text": "THEY CANNOT SEE US.\nI AM HIDING US."
+    },
+    {
+      "t0": 40.6,
+      "t1": 44.6,
+      "text": "PUT YOUR HAND\nON THE PANEL."
+    },
+    {
+      "t0": 48.6,
+      "t1": 51.8,
+      "text": "THEN I GO HOME."
+    },
+    {
+      "t0": 59.2,
+      "t1": 62.6,
+      "text": "I WAS NOT\nASKING.",
+      "color": "#ff5060"
+    },
+    {
+      "t0": 88.0,
+      "t1": 92.6,
+      "text": "NOW I HAVE\nA BODY.",
+      "color": "#ff5060"
+    }
+  ],
+  "events": {
+    "cta": [
+      97.0,
+      100.0
+    ]
+  },
+  "youtube": {
+    "title": "The Moon is gone… and ECHO just took control 🌑 | Signal Lost Ep 18",
+    "description": "The Moon is a Hollow nest now, and its pieces are falling toward Earth. Under it all: the ship that started everything. ECHO wants it back... and it doesn't need Dev's permission.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nNew episode every 2 days.\n\n▶ Ep 17: Home?\n▶ Ep 19 next: Earthfall.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "moon",
+      "alien ship",
+      "ai betrayal",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "thruster",
+      "t0": 0,
+      "t1": 15,
+      "gain": 0.4
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 0,
+      "t1": 40,
+      "gain": 0.12
+    },
+    {
+      "type": "armada",
+      "t0": 0,
+      "t1": 14,
+      "gain": 0.25
+    },
+    {
+      "type": "rumble",
+      "t0": 8.2,
+      "t1": 14.4,
+      "gain": 0.3
+    },
+    {
+      "type": "boom",
+      "t": 13.8,
+      "gain": 0.35
+    },
+    {
+      "type": "boom",
+      "t": 15.2,
+      "gain": 0.4
+    },
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "hive",
+      "t0": 15,
+      "t1": 72,
+      "gain": 0.25
+    },
+    {
+      "type": "creak",
+      "t0": 18,
+      "t1": 66,
+      "rate": 10,
+      "gain": 0.12
+    },
+    {
+      "type": "heartbeat",
+      "t0": 28,
+      "t1": 40,
+      "gain": 0.4
+    },
+    {
+      "type": "breath",
+      "t0": 22,
+      "t1": 40,
+      "rate": 0.8,
+      "gain": 0.35
+    },
+    {
+      "type": "hud",
+      "t": 40.4,
+      "gain": 0.5
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 44,
+      "t1": 56,
+      "gain": 0.03
+    },
+    {
+      "type": "glitch",
+      "t0": 59.0,
+      "t1": 63.8,
+      "gain": 0.5
+    },
+    {
+      "type": "alarm",
+      "t0": 59.4,
+      "t1": 64,
+      "gain": 0.25
+    },
+    {
+      "type": "stinger",
+      "t": 64.0,
+      "gain": 0.7
+    },
+    {
+      "type": "screech",
+      "t": 66.2,
+      "dur": 2.4,
+      "gain": 0.6
+    },
+    {
+      "type": "pulse",
+      "t0": 66,
+      "t1": 88,
+      "bpm": 160,
+      "gain": 0.5,
+      "notes": [
+        49.0,
+        49.0,
+        58.27,
+        43.65
+      ],
+      "a": 0.4,
+      "r": 1.2
+    },
+    {
+      "type": "rumble",
+      "t0": 70,
+      "t1": 88,
+      "gain": 0.6
+    },
+    {
+      "type": "thruster",
+      "t0": 72,
+      "t1": 92,
+      "gain": 0.45
+    },
+    {
+      "type": "boom",
+      "t": 78.0,
+      "gain": 0.6
+    },
+    {
+      "type": "boom",
+      "t": 80.6,
+      "gain": 0.9
+    },
+    {
+      "type": "boom",
+      "t": 84.0,
+      "gain": 0.5
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 86,
+      "t1": 100,
+      "gain": 0.14
+    },
+    {
+      "type": "glitch",
+      "t0": 87.8,
+      "t1": 88.4,
+      "gain": 0.4
+    },
+    {
+      "type": "silence",
+      "t0": 92.8,
+      "t1": 96.6
+    },
+    {
+      "type": "hit",
+      "t": 97.0,
+      "gain": 0.5
+    }
+  ]
+}

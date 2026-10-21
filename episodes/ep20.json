@@ -1,0 +1,284 @@
+{
+  "episode": 20,
+  "series": "Signal Lost · an ASCII space saga",
+  "title": "Ep 20 — Signal Found",
+  "duration": 100,
+  "cta": "▶ SEASON 2 · follow",
+  "captions": [
+    {
+      "t0": 5.0,
+      "t1": 8.6,
+      "text": "It called them.\nOne last time."
+    },
+    {
+      "t0": 12.0,
+      "t1": 15.6,
+      "text": "Every one of them\nfollowed."
+    },
+    {
+      "t0": 23.0,
+      "t1": 26.2,
+      "text": "Re-entry."
+    },
+    {
+      "t0": 27.0,
+      "t1": 30.6,
+      "text": "\"Come on...\ncome on...\""
+    },
+    {
+      "t0": 41.2,
+      "t1": 44.8,
+      "text": "Arabian Sea.\n6:12 a.m."
+    },
+    {
+      "t0": 50.0,
+      "t1": 53.2,
+      "text": "Dawn."
+    },
+    {
+      "t0": 54.0,
+      "t1": 57.8,
+      "text": "Pixel had never\nseen a sun."
+    },
+    {
+      "t0": 64.6,
+      "t1": 67.8,
+      "text": "\"Papa?\""
+    },
+    {
+      "t0": 69.0,
+      "t1": 72.4,
+      "text": "\"I'm home, beta.\""
+    },
+    {
+      "t0": 73.0,
+      "t1": 76.4,
+      "text": "\"I'm home.\""
+    },
+    {
+      "t0": 79.6,
+      "t1": 83.0,
+      "text": "Then his visor\nflickered."
+    },
+    {
+      "t0": 94.0,
+      "t1": 97.0,
+      "text": "End of Season 1."
+    }
+  ],
+  "echo": [
+    {
+      "t0": 1.0,
+      "t1": 4.6,
+      "text": "COME AND\nFIND ME."
+    },
+    {
+      "t0": 16.4,
+      "t1": 19.8,
+      "text": "GOODBYE, DEV."
+    },
+    {
+      "t0": 84.0,
+      "t1": 88.4,
+      "text": "D . E . V ."
+    }
+  ],
+  "cards": [
+    {
+      "t0": 89.6,
+      "t1": 93.6,
+      "text": "SIGNAL\nFOUND",
+      "size": 110,
+      "color": "#ff6070"
+    }
+  ],
+  "events": {
+    "cta": [
+      97.0,
+      100.0
+    ]
+  },
+  "youtube": {
+    "title": "He made it home. But the signal isn't over… 📡 | Signal Lost Ep 20 (Finale)",
+    "description": "ECHO calls the Hollow one last time and takes them through the gate. Dev falls home through fire, into the Arabian Sea at sunrise... and hears his daughter's voice. Then his visor flickers.\n\nSIGNAL LOST: an ASCII space saga. Every frame is drawn with text characters.\nSeason 1 finale. Season 2 is coming.\n\n▶ Ep 19: Earthfall.\n\n#shorts #scifi #ascii #space #animation #story",
+    "tags": [
+      "signal lost",
+      "starglyph",
+      "ascii art",
+      "ascii animation",
+      "sci-fi story",
+      "season finale",
+      "homecoming",
+      "sunrise",
+      "space saga",
+      "sci-fi animation",
+      "shorts"
+    ],
+    "categoryId": "1"
+  },
+  "sound": [
+    {
+      "type": "echo_voice",
+      "gain": 1.0
+    },
+    {
+      "type": "signal",
+      "t0": 0.4,
+      "t1": 10,
+      "every": 1.2,
+      "gain": 0.45
+    },
+    {
+      "type": "armada",
+      "t0": 2,
+      "t1": 21,
+      "gain": 0.4
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 0,
+      "t1": 22,
+      "gain": 0.12
+    },
+    {
+      "type": "stinger",
+      "t": 10.6,
+      "gain": 0.5
+    },
+    {
+      "type": "thruster",
+      "t0": 10,
+      "t1": 20,
+      "gain": 0.35
+    },
+    {
+      "type": "boom",
+      "t": 21.0,
+      "gain": 0.8
+    },
+    {
+      "type": "silence",
+      "t0": 21.6,
+      "t1": 22.4
+    },
+    {
+      "type": "rumble",
+      "t0": 22.4,
+      "t1": 33.4,
+      "gain": 0.7
+    },
+    {
+      "type": "wind",
+      "t0": 22.4,
+      "t1": 40,
+      "gain": 0.35,
+      "gust": [
+        29,
+        34,
+        2.0
+      ]
+    },
+    {
+      "type": "alarm",
+      "t0": 26,
+      "t1": 31,
+      "gain": 0.2
+    },
+    {
+      "type": "breath",
+      "t0": 26,
+      "t1": 31,
+      "rate": 1.3,
+      "gain": 0.5
+    },
+    {
+      "type": "hit",
+      "t": 33.2,
+      "gain": 0.5
+    },
+    {
+      "type": "splash",
+      "t": 40.0,
+      "gain": 0.9
+    },
+    {
+      "type": "sea",
+      "t0": 40,
+      "t1": 100,
+      "gain": 0.35
+    },
+    {
+      "type": "bed",
+      "kind": "pad",
+      "t0": 42,
+      "t1": 80,
+      "gain": 0.05
+    },
+    {
+      "type": "creak",
+      "t0": 47.6,
+      "t1": 48.8,
+      "rate": 20,
+      "gain": 0.2
+    },
+    {
+      "type": "coo",
+      "t": 55.0,
+      "gain": 0.7
+    },
+    {
+      "type": "swell",
+      "t": 50.0,
+      "dur": 7,
+      "gain": 0.6
+    },
+    {
+      "type": "hud",
+      "t": 63.6,
+      "gain": 0.5
+    },
+    {
+      "type": "voicenote",
+      "t": 64.0,
+      "gain": 0.8
+    },
+    {
+      "type": "swell",
+      "t": 69.0,
+      "dur": 8,
+      "pitch": 1.25,
+      "gain": 0.6
+    },
+    {
+      "type": "glitch",
+      "t0": 79.8,
+      "t1": 80.6,
+      "gain": 0.4
+    },
+    {
+      "type": "bed",
+      "kind": "tension",
+      "t0": 80,
+      "t1": 100,
+      "gain": 0.1
+    },
+    {
+      "type": "signal",
+      "t0": 88.6,
+      "t1": 93.6,
+      "every": 1.0,
+      "gain": 0.35
+    },
+    {
+      "type": "stinger",
+      "t": 89.6,
+      "gain": 0.6
+    },
+    {
+      "type": "hit",
+      "t": 97.0,
+      "gain": 0.5
+    }
+  ]
+}

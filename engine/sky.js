@@ -215,3 +215,39 @@ export function makeNightSky({ planetDir = [-0.55, 0.42, -1], spires = {} } = {}
   const sp = makeSpires(spires); group.add(sp.g);
   return { group, dome, ...rp, spires: sp };
 }
+
+// ---------------------------------------------------------------------------
+// Day sky for other worlds (glass / desert / ice ...): gradient dome, suns, faint ring arc, haze.
+// pal: { top, mid, horizon, below } css colours; suns: [{dir:[x,y,z], r, color:[r,g,b]}]
+// ---------------------------------------------------------------------------
+export function makeDaySky({ pal = { top: '#1a3a7a', mid: '#5aa0d8', horizon: '#f0c8e8', below: '#4a3a5a' }, suns = [], ring = null, clouds = 40, seed = 0 } = {}) {
+  const group = new THREE.Group();
+  const tex = canvasTex(2048, 1024, (g, w, h) => {
+    const gr = g.createLinearGradient(0, 0, 0, h);
+    gr.addColorStop(0, pal.top); gr.addColorStop(0.32, pal.mid); gr.addColorStop(0.49, pal.horizon); gr.addColorStop(0.53, pal.horizon); gr.addColorStop(1, pal.below);
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < clouds; i++) {                       // soft streaky clouds, wrapped at the seam
+      const x = hash2(i + seed, 21) * w, y = 180 + hash2(i + seed, 23) * 300, r = 60 + hash2(i + seed, 25) * 220;
+      for (const ox of [-w, 0, w]) {
+        g.save(); g.translate(x + ox, y); g.scale(1, 0.18);
+        const rg = g.createRadialGradient(0, 0, 0, 0, 0, r); rg.addColorStop(0, `rgba(255,255,255,${(0.08 + hash2(i, 27) * 0.14).toFixed(3)})`); rg.addColorStop(1, 'rgba(255,255,255,0)');
+        g.fillStyle = rg; g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.fill(); g.restore();
+      }
+    }
+  });
+  tex.wrapS = THREE.RepeatWrapping;
+  const dome = new THREE.Mesh(new THREE.SphereGeometry(3000, 64, 32), new THREE.MeshBasicMaterial({ map: tex, side: THREE.BackSide, depthWrite: false, fog: false }));
+  dome.renderOrder = -10; group.add(tag(dome, SET.SKY));
+  const sunMeshes = suns.map(s => {
+    const d = new THREE.Vector3(...s.dir).normalize();
+    const m = new THREE.Mesh(new THREE.SphereGeometry(s.r || 60, 24, 12), new THREE.MeshBasicMaterial({ color: new THREE.Color(...(s.color || [3, 2.8, 2.4])), fog: false }));
+    m.position.copy(d).multiplyScalar(2600); group.add(tag(m, SET.ENERGY));
+    const haloTex = canvasTex(128, 128, (c, w, h) => { const r = c.createRadialGradient(64, 64, 8, 64, 64, 64); r.addColorStop(0, 'rgba(255,240,220,0.7)'); r.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = r; c.fillRect(0, 0, w, h); });
+    const halo = new THREE.Mesh(new THREE.PlaneGeometry((s.r || 60) * 7, (s.r || 60) * 7), new THREE.MeshBasicMaterial({ map: haloTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+    halo.position.copy(d).multiplyScalar(2550); halo.lookAt(0, 0, 0); group.add(tag(halo, SET.SKY, true));
+    return m;
+  });
+  let rp = null;
+  if (ring) { rp = ringPlanet({ dir: ring.dir, dist: ring.dist || 2600, radius: ring.radius || 420 }); group.add(rp.g); rp.g.lookAtOrigin(); }
+  return { group, dome, suns: sunMeshes, ring: rp };
+}
