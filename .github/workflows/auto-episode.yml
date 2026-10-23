@@ -1,15 +1,19 @@
-name: Auto episode (every 2 days)
+name: Auto episode (2 Shorts a day)
 
-# Runs every morning. If the next episode's code is in the repo and nothing is already
-# scheduled far ahead, it renders that episode and uploads it as a scheduled Short
-# (PUBLISH_GAP_DAYS after the previous one, at PUBLISH_SLOTS IST). Otherwise it exits in seconds.
+# Runs every 4 hours. If the next episode's code is in the repo and nothing is already
+# scheduled far ahead, it renders that episode and uploads it as a scheduled Short in the
+# next free slot (PUBLISH_SLOTS IST, default 12:30 and 17:30). Otherwise it exits in seconds.
 on:
   schedule:
-    - cron: "30 3 * * *"        # 09:00 IST daily
+    - cron: "30 */4 * * *"      # every 4 h (03:30, 07:30, 11:30 ... UTC)
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:                 # one pick+render at a time, so the same episode is never picked twice
+  group: auto-episode
+  cancel-in-progress: false
 
 jobs:
   pick:
@@ -19,7 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: next
-        run: python3 scripts/next_episode.py
+        run: |
+          git pull --ff-only || true
+          python3 scripts/next_episode.py
 
   render:
     needs: pick

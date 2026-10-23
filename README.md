@@ -3,19 +3,19 @@
 ASCII-rendered sci-fi story Shorts. A 3D scene (three.js) is rendered headless, every frame is turned into
 coloured text glyphs, captions are typed on screen and the soundtrack is generated in code. No paid APIs.
 
-## Automatic: a new Short every 2 days
-`.github/workflows/auto-episode.yml` runs daily (09:00 IST), picks the next committed episode that is not in
+## Automatic: 2 Shorts a day (12:30 and 17:30 IST)
+`.github/workflows/auto-episode.yml` runs every 4 hours, picks the next committed episode that is not in
 `state/uploads.json` yet (`scripts/next_episode.py`), renders it on GitHub and schedules the upload
-`PUBLISH_GAP_DAYS` (default 2) after the previous one. All 20 Season 1 episodes are in the repo.
+in the next free `PUBLISH_SLOTS` time (default `12:30,17:30` IST; set `PUBLISH_GAP_DAYS` to space them out). All 20 Season 1 episodes are in the repo.
 
 ## Run an episode by hand
 GitHub → Actions → **Render episode** → Run workflow → episode `01`.
 The video is kept as a run artifact (14 days) and, if "upload" is ticked, uploaded to YouTube as a
-scheduled Short (next `PUBLISH_SLOTS` time, default 19:00 IST). Uploaded episodes are tracked in
+scheduled Short (next free `PUBLISH_SLOTS` time, default 12:30 / 17:30 IST). Uploaded episodes are tracked in
 `state/uploads.json`, so the same episode is never uploaded twice.
 
 Secrets: `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN` (get the token once with `python auth_setup.py`).
-Optional repo variable: `PUBLISH_SLOTS` (e.g. `19:00` or `12:00,19:00`).
+Optional repo variables: `PUBLISH_SLOTS` (default `12:30,17:30`), `PUBLISH_GAP_DAYS` (default `0`).
 
 ## Local
     npm ci

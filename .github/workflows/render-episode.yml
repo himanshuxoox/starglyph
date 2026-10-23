@@ -28,6 +28,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Get the latest upload state (another run may have just uploaded)
+        run: git pull --ff-only || true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -67,8 +70,8 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          PUBLISH_SLOTS: ${{ vars.PUBLISH_SLOTS || '19:00' }}
-          PUBLISH_GAP_DAYS: ${{ vars.PUBLISH_GAP_DAYS || '2' }}
+          PUBLISH_SLOTS: ${{ vars.PUBLISH_SLOTS || '12:30,17:30' }}
+          PUBLISH_GAP_DAYS: ${{ vars.PUBLISH_GAP_DAYS || '0' }}
         run: python upload.py --episode "${{ inputs.episode }}" --file "ep${{ inputs.episode }}.mp4"
 
       - name: Save upload state

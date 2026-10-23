@@ -17,8 +17,8 @@ from zoneinfo import ZoneInfo
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 IST = ZoneInfo("Asia/Kolkata")
-SLOTS = os.environ.get("PUBLISH_SLOTS", "19:00").split(",")   # story episodes: one evening slot
-GAP_DAYS = int(os.environ.get("PUBLISH_GAP_DAYS", "1") or 1)                  # days between episodes (2 = every other day)
+SLOTS = os.environ.get("PUBLISH_SLOTS", "12:30,17:30").split(",")   # IST publish times, two Shorts a day
+GAP_DAYS = float(os.environ.get("PUBLISH_GAP_DAYS", "0") or 0)              # 0 = next free slot; 2 = every other day
 STATE = os.path.join(ROOT, "state", "uploads.json")
 
 
@@ -40,7 +40,7 @@ def next_slot(after=None):
     """Next slot at least 20 min from now (YouTube needs publishAt in the future) and after `after`."""
     now = dt.datetime.now(IST) + dt.timedelta(minutes=20)
     if after is not None:
-        earliest = after + dt.timedelta(days=GAP_DAYS) - dt.timedelta(hours=2)   # keep the gap between episodes
+        earliest = after + max(dt.timedelta(days=GAP_DAYS) - dt.timedelta(hours=2), dt.timedelta(minutes=1))   # never reuse a slot
         if earliest >= now:
             now = earliest
     d = now.date()
